@@ -6,6 +6,7 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.ArrayAdapter;
+import android.widget.ExpandableListAdapter;
 import android.widget.ListView;
 
 import java.util.ArrayList;
@@ -22,13 +23,14 @@ public class TyotehtavatFragment extends Fragment {
         View rootView = inflater.inflate(R.layout.fragment_tyotehtavat, container, false);
         ListView lv = (ListView) rootView.findViewById(R.id.tyotehtavat);
         ArrayList<String> kohteet = new ArrayList<>();
-        kohteet.add("Lappeenranta University Of Technology");
-        kohteet.add("Lappeenranta University Of Technology2");
-        kohteet.add("Lappeenranta University Of Technology3");
+        for (int i = 0;i < 15;i++){
+            kohteet.add("LUT"+i);
+        }
         ArrayAdapter<String> arrayAdapter = new ArrayAdapter<String>(
-                this,
+                getActivity(),
                 android.R.layout.simple_list_item_1,
                 kohteet);
+        lv.setAdapter(arrayAdapter);
         return rootView;
     }
 }

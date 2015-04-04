@@ -283,19 +283,19 @@ containing a value of this type.
         public static final int clip_horizontal=0x7f080008;
         public static final int clip_vertical=0x7f080009;
         public static final int end=0x7f08000a;
-        public static final int expandableListView=0x7f080014;
         public static final int fill=0x7f08000b;
         public static final int fill_horizontal=0x7f08000c;
         public static final int fill_vertical=0x7f08000d;
         public static final int horizontal=0x7f080000;
         public static final int left=0x7f08000e;
         public static final int pager=0x7f080017;
+        public static final int raportointi=0x7f080015;
         public static final int right=0x7f08000f;
         public static final int section_label=0x7f080012;
         public static final int start=0x7f080010;
-        public static final int textView=0x7f080015;
         public static final int textView2=0x7f080016;
         public static final int top=0x7f080011;
+        public static final int tyotehtavat=0x7f080014;
         public static final int tyotehtavat_grid=0x7f080013;
         public static final int vertical=0x7f080001;
     }

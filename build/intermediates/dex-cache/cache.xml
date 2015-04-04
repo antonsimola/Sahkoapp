@@ -2,39 +2,39 @@
 <items version="2" >
 
     <item
-        jar="G:\Tavaraa\Tiedostot\Ohjelmointijuttuja\HorizontalPaging\Application\build\intermediates\exploded-aar\com.android.support\support-v4\21.0.2\libs\internal_impl-21.0.2.jar"
+        jar="D:\Tiedostot\Koodaus\sahkoapp\Sahkoapp\Application\build\intermediates\exploded-aar\com.android.support\support-v4\21.0.2\libs\internal_impl-21.0.2.jar"
         jumboMode="false"
         revision="21.1.2"
         sha1="962e8b12569c56dbdcf8367eb4eac8bb129cd18f">
-        <dex dex="G:\Tavaraa\Tiedostot\Ohjelmointijuttuja\HorizontalPaging\Application\build\intermediates\pre-dexed\debug\internal_impl-21.0.2-f0aed94a0aa9c9d564972274eb2cde7fcca6ae62.jar" />
+        <dex dex="D:\Tiedostot\Koodaus\sahkoapp\Sahkoapp\Application\build\intermediates\pre-dexed\debug\internal_impl-21.0.2-2fac7842956d53f7d393ced5619424a84f60ed6d.jar" />
+    </item>
+    <item
+        jar="D:\Tiedostot\Koodaus\sahkoapp\Sahkoapp\Application\build\intermediates\exploded-aar\com.android.support\cardview-v7\21.0.2\classes.jar"
+        jumboMode="false"
+        revision="21.1.2"
+        sha1="b017100da14f9c158c9f5f2f508333c224b24a7c">
+        <dex dex="D:\Tiedostot\Koodaus\sahkoapp\Sahkoapp\Application\build\intermediates\pre-dexed\debug\classes-b5a7bffd5adab6ed20163c6b460bb2daa65074f1.jar" />
+    </item>
+    <item
+        jar="D:\Tiedostot\Koodaus\sahkoapp\Sahkoapp\Application\build\intermediates\exploded-aar\com.android.support\gridlayout-v7\21.0.2\classes.jar"
+        jumboMode="false"
+        revision="21.1.2"
+        sha1="9742ced04aafd9ac97dd2c66c1aa0e32d2ae7e54">
+        <dex dex="D:\Tiedostot\Koodaus\sahkoapp\Sahkoapp\Application\build\intermediates\pre-dexed\debug\classes-df269cba8cb4d2890710c7546efa8094e429e6c3.jar" />
     </item>
     <item
         jar="D:\Apps\AndroidSDK\extras\android\m2repository\com\android\support\support-annotations\21.0.2\support-annotations-21.0.2.jar"
         jumboMode="false"
         revision="21.1.2"
         sha1="99373741f99a0556ee293c41e8faa1ca3ae8a4e6">
-        <dex dex="G:\Tavaraa\Tiedostot\Ohjelmointijuttuja\HorizontalPaging\Application\build\intermediates\pre-dexed\debug\support-annotations-21.0.2-5ce3265c78092a0f6a711a69138cfcb2252f35e8.jar" />
+        <dex dex="D:\Tiedostot\Koodaus\sahkoapp\Sahkoapp\Application\build\intermediates\pre-dexed\debug\support-annotations-21.0.2-5ce3265c78092a0f6a711a69138cfcb2252f35e8.jar" />
     </item>
     <item
-        jar="G:\Tavaraa\Tiedostot\Ohjelmointijuttuja\HorizontalPaging\Application\build\intermediates\exploded-aar\com.android.support\gridlayout-v7\21.0.2\classes.jar"
-        jumboMode="false"
-        revision="21.1.2"
-        sha1="9742ced04aafd9ac97dd2c66c1aa0e32d2ae7e54">
-        <dex dex="G:\Tavaraa\Tiedostot\Ohjelmointijuttuja\HorizontalPaging\Application\build\intermediates\pre-dexed\debug\classes-e71fcfd7accfc4024405d15c43a694d7e1e504ed.jar" />
-    </item>
-    <item
-        jar="G:\Tavaraa\Tiedostot\Ohjelmointijuttuja\HorizontalPaging\Application\build\intermediates\exploded-aar\com.android.support\cardview-v7\21.0.2\classes.jar"
-        jumboMode="false"
-        revision="21.1.2"
-        sha1="b017100da14f9c158c9f5f2f508333c224b24a7c">
-        <dex dex="G:\Tavaraa\Tiedostot\Ohjelmointijuttuja\HorizontalPaging\Application\build\intermediates\pre-dexed\debug\classes-e91976db52d0d5b49435d4f09a3bc1a1c055ff20.jar" />
-    </item>
-    <item
-        jar="G:\Tavaraa\Tiedostot\Ohjelmointijuttuja\HorizontalPaging\Application\build\intermediates\exploded-aar\com.android.support\support-v4\21.0.2\classes.jar"
+        jar="D:\Tiedostot\Koodaus\sahkoapp\Sahkoapp\Application\build\intermediates\exploded-aar\com.android.support\support-v4\21.0.2\classes.jar"
         jumboMode="false"
         revision="21.1.2"
         sha1="d1bf02de1c56d942e7a9d093b8610ba1ef4128e3">
-        <dex dex="G:\Tavaraa\Tiedostot\Ohjelmointijuttuja\HorizontalPaging\Application\build\intermediates\pre-dexed\debug\classes-54c8e05354a927d59513fffe110d481011f09671.jar" />
+        <dex dex="D:\Tiedostot\Koodaus\sahkoapp\Sahkoapp\Application\build\intermediates\pre-dexed\debug\classes-10aac8a1c15f19f5f6c23258b556d116d6e9263f.jar" />
     </item>
 
 </items>
