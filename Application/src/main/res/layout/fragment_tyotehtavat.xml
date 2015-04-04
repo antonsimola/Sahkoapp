@@ -1,0 +1,27 @@
+<?xml version="1.0" encoding="utf-8"?>
+<GridLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:orientation="vertical" android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:id="@+id/tyotehtavat_grid"
+    android:columnCount="2"
+    android:rowCount="1"
+    android:useDefaultMargins="true">
+
+    <ExpandableListView
+        android:layout_width="300dp"
+        android:layout_height="match_parent"
+        android:id="@+id/tyotehtavat"
+        android:choiceMode="singleChoice"
+        android:layout_column="0"
+        android:layout_row="0"
+        tools:listitem="@android:layout/simple_list_item_1" />
+
+    <ListView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:id="@+id/raportointi"
+        android:layout_row="0"
+        android:layout_column="1" />
+
+</GridLayout>
