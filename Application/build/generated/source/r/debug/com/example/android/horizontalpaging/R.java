@@ -276,34 +276,44 @@ containing a value of this type.
     public static final class id {
         public static final int alignBounds=0x7f080002;
         public static final int alignMargins=0x7f080003;
+        public static final int aloitus=0x7f080015;
         public static final int bottom=0x7f080004;
         public static final int center=0x7f080005;
         public static final int center_horizontal=0x7f080006;
         public static final int center_vertical=0x7f080007;
         public static final int clip_horizontal=0x7f080008;
         public static final int clip_vertical=0x7f080009;
+        public static final int deadline=0x7f080016;
         public static final int end=0x7f08000a;
         public static final int fill=0x7f08000b;
         public static final int fill_horizontal=0x7f08000c;
         public static final int fill_vertical=0x7f08000d;
         public static final int horizontal=0x7f080000;
         public static final int left=0x7f08000e;
-        public static final int pager=0x7f080017;
-        public static final int raportointi=0x7f080015;
+        public static final int list_raportointi=0x7f08001d;
+        public static final int list_tyotehtavat=0x7f08001c;
+        public static final int muuta=0x7f080018;
+        public static final int ohj_piir_linkki=0x7f08001a;
+        public static final int osoite=0x7f080019;
+        public static final int pager=0x7f08001f;
+        public static final int pvm=0x7f080012;
         public static final int right=0x7f08000f;
-        public static final int section_label=0x7f080012;
+        public static final int section_label=0x7f08001b;
         public static final int start=0x7f080010;
-        public static final int textView2=0x7f080016;
+        public static final int tehtava=0x7f080014;
+        public static final int textView2=0x7f08001e;
         public static final int top=0x7f080011;
-        public static final int tyotehtavat=0x7f080014;
-        public static final int tyotehtavat_grid=0x7f080013;
+        public static final int tyomaa=0x7f080013;
         public static final int vertical=0x7f080001;
+        public static final int yhteyshenkilo=0x7f080017;
     }
     public static final class layout {
-        public static final int fragment_main_dummy=0x7f030000;
-        public static final int fragment_tyotehtavat=0x7f030001;
-        public static final int fragment_uutiset=0x7f030002;
-        public static final int sample_main=0x7f030003;
+        public static final int explist_otsikko=0x7f030000;
+        public static final int explist_sisalto=0x7f030001;
+        public static final int fragment_main_dummy=0x7f030002;
+        public static final int fragment_tyotehtavat=0x7f030003;
+        public static final int fragment_uutiset=0x7f030004;
+        public static final int sample_main=0x7f030005;
     }
     public static final class string {
         public static final int action_settings=0x7f060000;

@@ -7,6 +7,7 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.ArrayAdapter;
 import android.widget.ExpandableListAdapter;
+import android.widget.ExpandableListView;
 import android.widget.ListView;
 
 import java.util.ArrayList;
@@ -21,16 +22,35 @@ public class TyotehtavatFragment extends Fragment {
                              Bundle savedInstanceState) {
 
         View rootView = inflater.inflate(R.layout.fragment_tyotehtavat, container, false);
-        ListView lv = (ListView) rootView.findViewById(R.id.tyotehtavat);
-        ArrayList<String> kohteet = new ArrayList<>();
-        for (int i = 0;i < 15;i++){
-            kohteet.add("LUT"+i);
-        }
-        ArrayAdapter<String> arrayAdapter = new ArrayAdapter<String>(
-                getActivity(),
-                android.R.layout.simple_list_item_1,
-                kohteet);
-        lv.setAdapter(arrayAdapter);
+        ExpandableListView elv = (ExpandableListView) rootView.findViewById(R.id.list_tyotehtavat);
+        ExpListAdapter adapter = new ExpListAdapter(luoData());
+        adapter.setInflater(inflater,this);
+        elv.setAdapter(adapter);
         return rootView;
+    }
+
+    private ArrayList<TyotehtavaOtsikko> luoData(){
+        ArrayList<TyotehtavaOtsikko> data = new ArrayList<>();
+        TyotehtavaOtsikko otsikko;
+        for (int i = 10;i > 1;i--){
+            otsikko = new TyotehtavaOtsikko();
+            otsikko.setPvm(i+".5.15");
+            otsikko.setTyomaa("LUT");
+            data.add(otsikko);
+        }
+        TyotehtavaSisalto sisalto = new TyotehtavaSisalto();
+        sisalto.setAloitus("1.5.15");
+        sisalto.setDeadline("5.5.15");
+        sisalto.setTehtava("Ledien asennus");
+        sisalto.setYhteyshenkilo("Makkonen");
+        sisalto.setMuuta("");
+        sisalto.setOsoite("LUT");
+        sisalto.setOhjPiirLinkki("LINKKI");
+
+        for (TyotehtavaOtsikko alkio:data){
+            alkio.setSisalto(sisalto);
+        }
+
+        return data;
     }
 }
