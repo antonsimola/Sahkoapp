@@ -32,7 +32,7 @@ public class DatePickerFragment extends DialogFragment
     }
 
     public void onDateSet(DatePicker view, int year, int month, int day) {
-        TextView textAloitus =(TextView) getActivity().findViewById(R.id.aika_aloitus);
+        TextView textAloitus =(TextView) getActivity().findViewById(R.id.text_start);
         textAloitus.setText(day+"." + month +"."+ year);
         DialogFragment newFragment = new TimePickerFragment();
         newFragment.show(getFragmentManager(),"timePicker");
