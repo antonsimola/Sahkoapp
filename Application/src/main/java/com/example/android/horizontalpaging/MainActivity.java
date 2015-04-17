@@ -2,7 +2,9 @@ package com.example.android.horizontalpaging;
 
 import android.app.ActionBar;
 import android.app.FragmentTransaction;
+import android.content.Context;
 import android.os.Bundle;
+import android.support.v4.app.DialogFragment;
 import android.support.v4.app.Fragment;
 import android.support.v4.app.FragmentActivity;
 import android.support.v4.app.FragmentManager;
@@ -13,6 +15,7 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.TextView;
+import android.widget.Toast;
 
 import java.util.ArrayList;
 import java.util.Locale;
@@ -151,10 +154,8 @@ public class MainActivity extends FragmentActivity implements ActionBar.TabListe
             // getItem is called to instantiate the fragment for the given page.
             // Return a DummySectionFragment (defined as a static inner class
             // below) with the page number as its lone argument.
-            Fragment fragment;
             switch (position){
                 case 0:
-                    System.out.println("0");
                     return new TyotehtavatFragment();
                 case 1:
                     return new UutisetFragment();
@@ -206,4 +207,17 @@ public class MainActivity extends FragmentActivity implements ActionBar.TabListe
         // END_INCLUDE (fragment_pager_adapter_getpagetitle)
     }
 
+    public void showDatePickerDialog(View v) {
+        //TÄHÄN PITÄISI SAADA TOISEN NAPIN PAINALLUS MUKAAN
+        DialogFragment newFragment = new DatePickerFragment();
+        newFragment.show(getSupportFragmentManager(),"datePicker");
+    }
+    public void showToast(View v) {
+        Context context = getApplicationContext();
+        CharSequence text = "Raporttisi on lähetetty tarkastettavaksi!";
+        int duration = Toast.LENGTH_SHORT;
+
+        Toast toast = Toast.makeText(context, text, duration);
+        toast.show();
+    }
 }

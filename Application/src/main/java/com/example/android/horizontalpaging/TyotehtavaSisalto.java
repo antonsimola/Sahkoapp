@@ -37,7 +37,7 @@ public class TyotehtavaSisalto {
     }
 
     public String getYhteyshenkilo() {
-        return "Yhteyshenkilö +" +yhteyshenkilo;
+        return "Yhteyshenkilö: " +yhteyshenkilo;
     }
 
     public void setYhteyshenkilo(String yhteyshenkilo) {
