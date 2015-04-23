@@ -1,7 +1,7 @@
-C:\Users\joona\Android studioProjects\Sahkoapp\Application\build\intermediates\classes\debug
-C:\Users\joona\Android studioProjects\Sahkoapp\Application\build\intermediates\pre-dexed\debug\support-annotations-21.0.3-b2e762a7caf4d901ec9d3ed582e9b861b1ca91e4.jar
-C:\Users\joona\Android studioProjects\Sahkoapp\Application\build\intermediates\pre-dexed\debug\classes-97a8724fc2670654550ced2c1ed08f57d4abac6e.jar
-C:\Users\joona\Android studioProjects\Sahkoapp\Application\build\intermediates\pre-dexed\debug\classes-425910551b48c16ca73d1dc6ef58a2400a397904.jar
-C:\Users\joona\Android studioProjects\Sahkoapp\Application\build\intermediates\pre-dexed\debug\internal_impl-21.0.3-1a089be1a7d97d72e46aa56e7deff8d8ab51f6fd.jar
-C:\Users\joona\Android studioProjects\Sahkoapp\Application\build\intermediates\pre-dexed\debug\classes-517ea851e92cda205980ad22253c6115e66e3dee.jar
-C:\Users\joona\Android studioProjects\Sahkoapp\Application\build\intermediates\pre-dexed\debug\classes-51a6dd60f14075c1db1671ca63fb42567c92057c.jar
+G:\Tavaraa\Tiedostot\Ohjelmointijuttuja\HorizontalPaging\Application\build\intermediates\classes\debug
+G:\Tavaraa\Tiedostot\Ohjelmointijuttuja\HorizontalPaging\Application\build\intermediates\pre-dexed\debug\support-annotations-21.0.3-53d01d6c06c441ba778aa25af8c9ea18ddabce68.jar
+G:\Tavaraa\Tiedostot\Ohjelmointijuttuja\HorizontalPaging\Application\build\intermediates\pre-dexed\debug\classes-e91976db52d0d5b49435d4f09a3bc1a1c055ff20.jar
+G:\Tavaraa\Tiedostot\Ohjelmointijuttuja\HorizontalPaging\Application\build\intermediates\pre-dexed\debug\classes-e71fcfd7accfc4024405d15c43a694d7e1e504ed.jar
+G:\Tavaraa\Tiedostot\Ohjelmointijuttuja\HorizontalPaging\Application\build\intermediates\pre-dexed\debug\internal_impl-21.0.3-751aed46707de0429ca80b5497621130dc381a48.jar
+G:\Tavaraa\Tiedostot\Ohjelmointijuttuja\HorizontalPaging\Application\build\intermediates\pre-dexed\debug\classes-d2ef8e8f822a7387b649235de131b80d915fb2ac.jar
+G:\Tavaraa\Tiedostot\Ohjelmointijuttuja\HorizontalPaging\Application\build\intermediates\pre-dexed\debug\classes-02554b47646e58979d90d49f83f46f97b54ad3bf.jar

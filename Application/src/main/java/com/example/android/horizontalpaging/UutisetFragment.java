@@ -7,6 +7,7 @@ package com.example.android.horizontalpaging;
 
 import android.os.Bundle;
 import android.support.v4.app.Fragment;
+import android.support.v4.view.ViewPager;
 import android.support.v7.widget.GridLayoutManager;
 import android.support.v7.widget.RecyclerView;
 import android.util.Log;
@@ -23,6 +24,9 @@ public class UutisetFragment extends Fragment  {
     View rootView;
     private List<News> news;
     private RecyclerView rv;
+    //Tässä on activityn viewpager
+    ViewPager mViewPager;
+
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
@@ -37,6 +41,8 @@ public class UutisetFragment extends Fragment  {
                         {
                             // Go to TyötehtävätFragment
                             Log.d("OnClick", "Priority");
+                            //uutisten ekaa klikkaamalla pääsee työtehtäviin
+                            mViewPager.setCurrentItem(0);
                             //Intent intent = new Intent(getActivity(), TyotehtavatFragment.class);
                             //startActivity(intent);
                         }
@@ -66,5 +72,9 @@ public class UutisetFragment extends Fragment  {
     private void initAdapter(){
         CustomAdapter adapter = new CustomAdapter(news);
         rv.setAdapter(adapter);
+    }
+    //Tässä otetaan sisään viewpager
+    public void setViewPager(ViewPager vp) {
+        mViewPager = vp;
     }
 }

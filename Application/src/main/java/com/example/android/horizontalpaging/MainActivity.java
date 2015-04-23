@@ -10,6 +10,7 @@ import android.support.v4.app.FragmentActivity;
 import android.support.v4.app.FragmentManager;
 import android.support.v4.app.FragmentPagerAdapter;
 import android.support.v4.view.ViewPager;
+import android.support.v7.widget.RecyclerView;
 import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -72,6 +73,7 @@ public class MainActivity extends FragmentActivity implements ActionBar.TabListe
         // Set up the ViewPager with the sections adapter.
         mViewPager = (ViewPager) findViewById(R.id.pager);
         mViewPager.setAdapter(mSectionsPagerAdapter);
+
         // END_INCLUDE (setup_view_pager)
 
         // When swiping between different sections, select the corresponding tab. We can also use
@@ -158,7 +160,10 @@ public class MainActivity extends FragmentActivity implements ActionBar.TabListe
                 case 0:
                     return new TyotehtavatFragment();
                 case 1:
-                    return new UutisetFragment();
+                    //Tässä laitetaan tuo viewPager olio messiin tuolle uutisetFragmentille
+                    UutisetFragment uutiset = new UutisetFragment();
+                    uutiset.setViewPager(mViewPager);
+                    return uutiset;
                 case 2:
                     return new DummyFragment();
                 case 3:
