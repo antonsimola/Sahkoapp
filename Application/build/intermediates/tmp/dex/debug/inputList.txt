@@ -1,6 +1,7 @@
-G:\Tavaraa\Tiedostot\Ohjelmointijuttuja\HorizontalPaging\Application\build\intermediates\classes\debug
-G:\Tavaraa\Tiedostot\Ohjelmointijuttuja\HorizontalPaging\Application\build\intermediates\pre-dexed\debug\support-annotations-21.0.2-5ce3265c78092a0f6a711a69138cfcb2252f35e8.jar
-G:\Tavaraa\Tiedostot\Ohjelmointijuttuja\HorizontalPaging\Application\build\intermediates\pre-dexed\debug\classes-e91976db52d0d5b49435d4f09a3bc1a1c055ff20.jar
-G:\Tavaraa\Tiedostot\Ohjelmointijuttuja\HorizontalPaging\Application\build\intermediates\pre-dexed\debug\classes-e71fcfd7accfc4024405d15c43a694d7e1e504ed.jar
-G:\Tavaraa\Tiedostot\Ohjelmointijuttuja\HorizontalPaging\Application\build\intermediates\pre-dexed\debug\internal_impl-21.0.2-f0aed94a0aa9c9d564972274eb2cde7fcca6ae62.jar
-G:\Tavaraa\Tiedostot\Ohjelmointijuttuja\HorizontalPaging\Application\build\intermediates\pre-dexed\debug\classes-54c8e05354a927d59513fffe110d481011f09671.jar
+C:\Users\joona\Android studioProjects\Sahkoapp\Application\build\intermediates\classes\debug
+C:\Users\joona\Android studioProjects\Sahkoapp\Application\build\intermediates\pre-dexed\debug\support-annotations-21.0.3-b2e762a7caf4d901ec9d3ed582e9b861b1ca91e4.jar
+C:\Users\joona\Android studioProjects\Sahkoapp\Application\build\intermediates\pre-dexed\debug\classes-97a8724fc2670654550ced2c1ed08f57d4abac6e.jar
+C:\Users\joona\Android studioProjects\Sahkoapp\Application\build\intermediates\pre-dexed\debug\classes-425910551b48c16ca73d1dc6ef58a2400a397904.jar
+C:\Users\joona\Android studioProjects\Sahkoapp\Application\build\intermediates\pre-dexed\debug\internal_impl-21.0.3-1a089be1a7d97d72e46aa56e7deff8d8ab51f6fd.jar
+C:\Users\joona\Android studioProjects\Sahkoapp\Application\build\intermediates\pre-dexed\debug\classes-517ea851e92cda205980ad22253c6115e66e3dee.jar
+C:\Users\joona\Android studioProjects\Sahkoapp\Application\build\intermediates\pre-dexed\debug\classes-51a6dd60f14075c1db1671ca63fb42567c92057c.jar

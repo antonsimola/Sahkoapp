@@ -4,7 +4,8 @@
     android:layout_height="fill_parent"
     android:weightSum="2"
     android:baselineAligned="false"
-    android:background="#6699FF">
+    android:background="#6699FF"
+    android:id="@+id/asd">
 
     <ExpandableListView
         android:layout_width="match_parent"
