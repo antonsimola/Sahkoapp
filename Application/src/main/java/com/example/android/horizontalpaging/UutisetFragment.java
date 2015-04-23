@@ -24,7 +24,6 @@ public class UutisetFragment extends Fragment  {
     View rootView;
     private List<News> news;
     private RecyclerView rv;
-    //Tässä on activityn viewpager
     ViewPager mViewPager;
 
     @Override
@@ -39,12 +38,8 @@ public class UutisetFragment extends Fragment  {
                     @Override public void onItemClick(View view, int position) {
                         if (position == 0)
                         {
-                            // Go to TyötehtävätFragment
-                            Log.d("OnClick", "Priority");
-                            //uutisten ekaa klikkaamalla pääsee työtehtäviin
+                            //Log.d("OnClick", "Priority");
                             mViewPager.setCurrentItem(0);
-                            //Intent intent = new Intent(getActivity(), TyotehtavatFragment.class);
-                            //startActivity(intent);
                         }
                     }
                 })
@@ -73,7 +68,6 @@ public class UutisetFragment extends Fragment  {
         CustomAdapter adapter = new CustomAdapter(news);
         rv.setAdapter(adapter);
     }
-    //Tässä otetaan sisään viewpager
     public void setViewPager(ViewPager vp) {
         mViewPager = vp;
     }
