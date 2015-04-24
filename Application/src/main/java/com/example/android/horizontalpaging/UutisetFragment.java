@@ -8,12 +8,17 @@ package com.example.android.horizontalpaging;
 import android.os.Bundle;
 import android.support.v4.app.Fragment;
 import android.support.v4.view.ViewPager;
+import android.support.v7.widget.CardView;
 import android.support.v7.widget.GridLayoutManager;
 import android.support.v7.widget.RecyclerView;
 import android.util.Log;
+import android.view.Gravity;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.PopupWindow;
+import android.widget.Toast;
+
 import java.util.ArrayList;
 import java.util.List;
 
@@ -25,7 +30,7 @@ public class UutisetFragment extends Fragment  {
     private List<News> news;
     private RecyclerView rv;
     ViewPager mViewPager;
-
+    boolean click = true;
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
@@ -38,8 +43,16 @@ public class UutisetFragment extends Fragment  {
                     @Override public void onItemClick(View view, int position) {
                         if (position == 0)
                         {
-                            //Log.d("OnClick", "Priority");
+                            Log.d("OnClick", "Priority");
                             mViewPager.setCurrentItem(0);
+                        }
+                        else
+                        {
+                            // TODO: PopupWindow with the content of the clicked card
+                            // Currently only testing toasts :(
+                            String txt = "CardID: " + position;
+                            Toast toast = Toast.makeText(rootView.getContext(), txt, Toast.LENGTH_SHORT);
+                            toast.show();
                         }
                     }
                 })
