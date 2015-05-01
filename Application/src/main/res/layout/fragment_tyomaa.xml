@@ -1,0 +1,43 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:id="@+id/tyomaa_main_linear_layout"
+    android:orientation="vertical"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:paddingRight="5dp"
+    android:paddingLeft="5dp"
+    android:background="#6699FF">
+
+    <LinearLayout
+        android:id="@+id/tyomaa_linear_layout"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal"
+        android:layout_gravity="center"
+        android:paddingTop="15dp"
+        android:paddingBottom="15dp">
+
+        <SearchView
+            android:id="@+id/tyomaa_search_view"
+            android:layout_width="250dp"
+            android:layout_height="wrap_content"
+            android:queryHint="@string/tyomaa_search_view"/>
+
+        <Button
+            android:id="@+id/tyomaa_button"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="@string/tyomaa_button"/>
+    </LinearLayout>
+
+    <GridView
+        android:id="@+id/tyomaa_grid_view"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:columnWidth="90dp"
+        android:numColumns="auto_fit"
+        android:verticalSpacing="80dp"
+        android:horizontalSpacing="80dp"
+        android:stretchMode="columnWidth"
+        android:gravity="center" />
+</LinearLayout>

@@ -2,32 +2,46 @@
 <items version="2" >
 
     <item
-        jar="G:\Tavaraa\Tiedostot\Ohjelmointijuttuja\HorizontalPaging\Application\build\intermediates\exploded-aar\com.android.support\support-v4\21.0.3\libs\internal_impl-21.0.3.jar"
-        jumboMode="false"
-        revision="21.1.2"
-        sha1="01ec05bfbafcc07646ba813000bf2ef11742dd03">
-        <dex dex="G:\Tavaraa\Tiedostot\Ohjelmointijuttuja\HorizontalPaging\Application\build\intermediates\pre-dexed\debug\internal_impl-21.0.3-751aed46707de0429ca80b5497621130dc381a48.jar" />
-    </item>
-    <item
-        jar="D:\Apps\AndroidSDK\extras\android\m2repository\com\android\support\support-annotations\21.0.3\support-annotations-21.0.3.jar"
-        jumboMode="false"
-        revision="21.1.2"
-        sha1="4b74cefe1f0c1b819e7260c8627a14674e37fd35">
-        <dex dex="G:\Tavaraa\Tiedostot\Ohjelmointijuttuja\HorizontalPaging\Application\build\intermediates\pre-dexed\debug\support-annotations-21.0.3-53d01d6c06c441ba778aa25af8c9ea18ddabce68.jar" />
-    </item>
-    <item
-        jar="G:\Tavaraa\Tiedostot\Ohjelmointijuttuja\HorizontalPaging\Application\build\intermediates\exploded-aar\com.android.support\support-v4\21.0.3\classes.jar"
-        jumboMode="false"
-        revision="21.1.2"
-        sha1="2c91c949a45a21cdecf26e03951e46c7beec9ad8">
-        <dex dex="G:\Tavaraa\Tiedostot\Ohjelmointijuttuja\HorizontalPaging\Application\build\intermediates\pre-dexed\debug\classes-02554b47646e58979d90d49f83f46f97b54ad3bf.jar" />
-    </item>
-    <item
-        jar="G:\Tavaraa\Tiedostot\Ohjelmointijuttuja\HorizontalPaging\Application\build\intermediates\exploded-aar\com.android.support\recyclerview-v7\21.0.3\classes.jar"
+        jar="C:\Users\Samuli\Documents\AndroidStudioProjects\Sahkoapp\Application\build\intermediates\exploded-aar\com.android.support\recyclerview-v7\21.0.3\classes.jar"
         jumboMode="false"
         revision="21.1.2"
         sha1="4b8945fc23a7461c6fdde15753456d64b0a9358b">
-        <dex dex="G:\Tavaraa\Tiedostot\Ohjelmointijuttuja\HorizontalPaging\Application\build\intermediates\pre-dexed\debug\classes-d2ef8e8f822a7387b649235de131b80d915fb2ac.jar" />
+        <dex dex="C:\Users\Samuli\Documents\AndroidStudioProjects\Sahkoapp\Application\build\intermediates\pre-dexed\debug\classes-bc86658ca60cb3fed40a234d31b05947f3af2b99.jar" />
+    </item>
+    <item
+        jar="C:\Users\Samuli\Documents\AndroidStudioProjects\Sahkoapp\Application\build\intermediates\exploded-aar\com.android.support\support-v4\21.0.3\libs\internal_impl-21.0.3.jar"
+        jumboMode="false"
+        revision="21.1.2"
+        sha1="01ec05bfbafcc07646ba813000bf2ef11742dd03">
+        <dex dex="C:\Users\Samuli\Documents\AndroidStudioProjects\Sahkoapp\Application\build\intermediates\pre-dexed\debug\internal_impl-21.0.3-20eaed0ab7486e0b8e9c76860d036eaead510a1b.jar" />
+    </item>
+    <item
+        jar="C:\Users\Samuli\AppData\Local\Android\sdk\extras\android\m2repository\com\android\support\support-annotations\21.0.3\support-annotations-21.0.3.jar"
+        jumboMode="false"
+        revision="21.1.2"
+        sha1="4b74cefe1f0c1b819e7260c8627a14674e37fd35">
+        <dex dex="C:\Users\Samuli\Documents\AndroidStudioProjects\Sahkoapp\Application\build\intermediates\pre-dexed\debug\support-annotations-21.0.3-0fbe6926423348f08615d7aa5826de88c125dc76.jar" />
+    </item>
+    <item
+        jar="C:\Users\Samuli\Documents\AndroidStudioProjects\Sahkoapp\Application\build\intermediates\exploded-aar\com.android.support\gridlayout-v7\21.0.2\classes.jar"
+        jumboMode="false"
+        revision="21.1.2"
+        sha1="9742ced04aafd9ac97dd2c66c1aa0e32d2ae7e54">
+        <dex dex="C:\Users\Samuli\Documents\AndroidStudioProjects\Sahkoapp\Application\build\intermediates\pre-dexed\debug\classes-53956587880462a502df8dc518e3ccb25a496411.jar" />
+    </item>
+    <item
+        jar="C:\Users\Samuli\Documents\AndroidStudioProjects\Sahkoapp\Application\build\intermediates\exploded-aar\com.android.support\cardview-v7\21.0.2\classes.jar"
+        jumboMode="false"
+        revision="21.1.2"
+        sha1="b017100da14f9c158c9f5f2f508333c224b24a7c">
+        <dex dex="C:\Users\Samuli\Documents\AndroidStudioProjects\Sahkoapp\Application\build\intermediates\pre-dexed\debug\classes-afa21219108a38aefe2d4792b3552aad709f2c53.jar" />
+    </item>
+    <item
+        jar="C:\Users\Samuli\Documents\AndroidStudioProjects\Sahkoapp\Application\build\intermediates\exploded-aar\com.android.support\support-v4\21.0.3\classes.jar"
+        jumboMode="false"
+        revision="21.1.2"
+        sha1="2c91c949a45a21cdecf26e03951e46c7beec9ad8">
+        <dex dex="C:\Users\Samuli\Documents\AndroidStudioProjects\Sahkoapp\Application\build\intermediates\pre-dexed\debug\classes-bd38c72189db5103a54cbf58a820b0e7eba6d585.jar" />
     </item>
 
 </items>

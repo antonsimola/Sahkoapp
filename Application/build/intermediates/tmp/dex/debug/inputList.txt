@@ -1,7 +1,7 @@
-C:\Users\joona\Android studioProjects\Sahkoapp\Application\build\intermediates\classes\debug
-C:\Users\joona\Android studioProjects\Sahkoapp\Application\build\intermediates\pre-dexed\debug\support-annotations-21.0.3-b2e762a7caf4d901ec9d3ed582e9b861b1ca91e4.jar
-C:\Users\joona\Android studioProjects\Sahkoapp\Application\build\intermediates\pre-dexed\debug\classes-97a8724fc2670654550ced2c1ed08f57d4abac6e.jar
-C:\Users\joona\Android studioProjects\Sahkoapp\Application\build\intermediates\pre-dexed\debug\classes-425910551b48c16ca73d1dc6ef58a2400a397904.jar
-C:\Users\joona\Android studioProjects\Sahkoapp\Application\build\intermediates\pre-dexed\debug\internal_impl-21.0.3-1a089be1a7d97d72e46aa56e7deff8d8ab51f6fd.jar
-C:\Users\joona\Android studioProjects\Sahkoapp\Application\build\intermediates\pre-dexed\debug\classes-517ea851e92cda205980ad22253c6115e66e3dee.jar
-C:\Users\joona\Android studioProjects\Sahkoapp\Application\build\intermediates\pre-dexed\debug\classes-51a6dd60f14075c1db1671ca63fb42567c92057c.jar
+C:\Users\Samuli\Documents\AndroidStudioProjects\Sahkoapp\Application\build\intermediates\classes\debug
+C:\Users\Samuli\Documents\AndroidStudioProjects\Sahkoapp\Application\build\intermediates\pre-dexed\debug\support-annotations-21.0.3-0fbe6926423348f08615d7aa5826de88c125dc76.jar
+C:\Users\Samuli\Documents\AndroidStudioProjects\Sahkoapp\Application\build\intermediates\pre-dexed\debug\classes-afa21219108a38aefe2d4792b3552aad709f2c53.jar
+C:\Users\Samuli\Documents\AndroidStudioProjects\Sahkoapp\Application\build\intermediates\pre-dexed\debug\classes-53956587880462a502df8dc518e3ccb25a496411.jar
+C:\Users\Samuli\Documents\AndroidStudioProjects\Sahkoapp\Application\build\intermediates\pre-dexed\debug\internal_impl-21.0.3-20eaed0ab7486e0b8e9c76860d036eaead510a1b.jar
+C:\Users\Samuli\Documents\AndroidStudioProjects\Sahkoapp\Application\build\intermediates\pre-dexed\debug\classes-bc86658ca60cb3fed40a234d31b05947f3af2b99.jar
+C:\Users\Samuli\Documents\AndroidStudioProjects\Sahkoapp\Application\build\intermediates\pre-dexed\debug\classes-bd38c72189db5103a54cbf58a820b0e7eba6d585.jar

@@ -21,7 +21,8 @@ import android.widget.Toast;
 import java.util.ArrayList;
 import java.util.Locale;
 
-public class MainActivity extends FragmentActivity implements ActionBar.TabListener {
+public class MainActivity extends FragmentActivity implements ActionBar.TabListener,
+        TyomaaFragment.OnPiirustuksetOhjeetInteractionListener {
 
     /**
      * The {@link android.support.v4.view.PagerAdapter} that will provide
@@ -165,7 +166,7 @@ public class MainActivity extends FragmentActivity implements ActionBar.TabListe
                     uutiset.setViewPager(mViewPager);
                     return uutiset;
                 case 2:
-                    return new DummyFragment();
+                    return new TyomaaFragment();
                 case 3:
                     return new DummyFragment();
             }
@@ -224,5 +225,16 @@ public class MainActivity extends FragmentActivity implements ActionBar.TabListe
 
         Toast toast = Toast.makeText(context, text, duration);
         toast.show();
+    }
+
+    @Override
+    public void onPiirustuksetOhjeetGridSelected(int position) {
+        System.out.println("MainActivity: " + position);
+    }
+
+    @Override
+    public void onPiirustuksetOhjeetSearch(String search) {
+        System.out.println("MainActivity: " + search);
+
     }
 }
