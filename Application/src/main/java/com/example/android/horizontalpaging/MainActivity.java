@@ -3,6 +3,7 @@ package com.example.android.horizontalpaging;
 import android.app.ActionBar;
 import android.app.FragmentTransaction;
 import android.content.Context;
+import android.content.Intent;
 import android.os.Bundle;
 import android.support.v4.app.DialogFragment;
 import android.support.v4.app.Fragment;
@@ -22,7 +23,12 @@ import java.util.ArrayList;
 import java.util.Locale;
 
 public class MainActivity extends FragmentActivity implements ActionBar.TabListener,
-        TyomaaFragment.OnPiirustuksetOhjeetInteractionListener {
+        TyomaaFragment.OnTyomaaInteractionListener {
+
+    private WorksiteControl worksiteControl;
+
+    public final static String DRAWINGS_INSTRUCTIONS_MESSAGE =
+            "com.example.android.horizontal.MESSAGE";
 
     /**
      * The {@link android.support.v4.view.PagerAdapter} that will provide
@@ -55,6 +61,8 @@ public class MainActivity extends FragmentActivity implements ActionBar.TabListe
         super.onCreate(savedInstanceState);
         // Load the UI from res/layout/activity_main.xml
         setContentView(R.layout.sample_main);
+
+        worksiteControl = new WorksiteControl(10);  // Luodaan 10 työmaata.
 
 
         // Set up the action bar. The navigation mode is set to NAVIGATION_MODE_TABS, which will
@@ -166,7 +174,11 @@ public class MainActivity extends FragmentActivity implements ActionBar.TabListe
                     uutiset.setViewPager(mViewPager);
                     return uutiset;
                 case 2:
-                    return new TyomaaFragment();
+                    TyomaaFragment tyomaaFragment = new TyomaaFragment();
+
+                    // Tyomaat täytyy asettaa erikseen heti olion luomisen jälkeen.
+                    tyomaaFragment.setWorkSites(worksiteControl.getWorksites());
+                    return tyomaaFragment;
                 case 3:
                     return new DummyFragment();
             }
@@ -228,12 +240,22 @@ public class MainActivity extends FragmentActivity implements ActionBar.TabListe
     }
 
     @Override
-    public void onPiirustuksetOhjeetGridSelected(int position) {
-        System.out.println("MainActivity: " + position);
+    public void onTyomaaGridSelected(int position) {
+        // Käyttäjä valitse Ohjeet-osiosta kansion, jolla on indeksi (>= 0).
+
+        // Lähde: http://developer.android.com/training/basics/firstapp/starting-activity.html
+        // ja: http://stackoverflow.com/questions/2139134/how-to-send-an-object-from-one-android-activity-to-another-using-intents
+
+        Intent intent = new Intent(this, PiirustuksetOhjeetActivity.class);
+
+        // Tässä annetaan PiirustuksetOhjeetActivitylle referenssi yhteen työmaahan, jonka
+        // perusteella rakennetaan fragmenttien sisältö (piirustukset ja ohjeet työmaalle).
+        intent.putExtra(DRAWINGS_INSTRUCTIONS_MESSAGE, worksiteControl.getWorksites().get(position));
+        startActivity(intent);
     }
 
     @Override
-    public void onPiirustuksetOhjeetSearch(String search) {
+    public void onTyomaaSearch(String search) {
         System.out.println("MainActivity: " + search);
 
     }

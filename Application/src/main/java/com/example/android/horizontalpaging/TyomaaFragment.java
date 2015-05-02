@@ -20,13 +20,10 @@ import java.util.ArrayList;
  */
 public class TyomaaFragment extends Fragment {
 
-    private OnPiirustuksetOhjeetInteractionListener mainActivity;
-    private PiirustuksetOhjeetAdapter piirustuksetOhjeetAdapter;
-    private ArrayList<Worksite> workSites;
-    /**
-     * The fragment argument representing the section number for this
-     * fragment.
-     */
+    private OnTyomaaInteractionListener mainActivity;  // Viite MainActivityyn (tiedonsiirto).
+
+    private TyomaaAdapter tyomaaAdapter;  // Muodostaa gridiin (GridView) kansioita.
+    private ArrayList<Worksite> workSites;  // Kaikki tyomaat.
 
     public TyomaaFragment() {
 
@@ -37,25 +34,25 @@ public class TyomaaFragment extends Fragment {
                              Bundle savedInstanceState) {
         final View rootView = inflater.inflate(R.layout.fragment_tyomaa, container, false);
 
-        // Hakupainike haun toteuttamiseksi.
+        // Hakupainike työmaahaulle.
         Button searchButton = (Button)rootView.findViewById(R.id.tyomaa_button);
 
         // Etsitään matriisi (GridView) XML-tiedosta.
         GridView gridview = (GridView)rootView.findViewById(R.id.tyomaa_grid_view);
 
-        piirustuksetOhjeetAdapter = new PiirustuksetOhjeetAdapter(rootView.getContext(), workSites);
+        tyomaaAdapter = new TyomaaAdapter(rootView.getContext(), workSites);
+
         // Asetataan matriisille (GridView) adapteri, jonka avulla syötetään matriisiin kuvat.
-        gridview.setAdapter(piirustuksetOhjeetAdapter);
+        gridview.setAdapter(tyomaaAdapter);
 
 
-        // Tapahtumankuuntelija matriisille (alkion valitseminen).
+        // Tapahtumankuuntelija matriisille (kansion valitseminen).
         gridview.setOnItemClickListener(new AdapterView.OnItemClickListener() {
             @Override
             public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
-                mainActivity.onPiirustuksetOhjeetGridSelected(position);
+                mainActivity.onTyomaaGridSelected(position);
             }
         });
-
 
         // Tapahtumankuuntelija hakupainikkeelle (tehdään työmaahaku).
         searchButton.setOnClickListener(new View.OnClickListener() {
@@ -63,7 +60,7 @@ public class TyomaaFragment extends Fragment {
             public void onClick(View v) {
                 SearchView searchText = (SearchView)rootView.findViewById(
                         R.id.tyomaa_search_view);
-                mainActivity.onPiirustuksetOhjeetSearch(searchText.getQuery().toString());
+                mainActivity.onTyomaaSearch(searchText.getQuery().toString());
 
             }
         });
@@ -72,13 +69,13 @@ public class TyomaaFragment extends Fragment {
     }
 
     /* Mahdollistetaan Fragmentin ja MainActivityn välinen tiedonsiirto, eli otetaan viite
-     * MainActivityyn.
+     * MainActivityyn rajapintatoteutuksen avulla.
      */
     @Override
     public void onAttach(Activity activity) {
         super.onAttach(activity);
         try {
-            mainActivity = (OnPiirustuksetOhjeetInteractionListener) activity;
+            mainActivity = (OnTyomaaInteractionListener) activity;
         } catch (ClassCastException e) {
             // MainActivity ei toteuta rajapintaa.
             throw new ClassCastException(activity.toString()
@@ -86,7 +83,7 @@ public class TyomaaFragment extends Fragment {
         }
     }
 
-    /* Puretaan Fragmentin ja MainActivityn välinen yhteys (referenssi).
+    /* Puretaan Fragmentin ja MainActivityn välinen yhteys.
      */
     @Override
     public void onDetach() {
@@ -94,25 +91,15 @@ public class TyomaaFragment extends Fragment {
         mainActivity = null;
     }
 
-
-    /* Tiedonvälitys --> MainActivity.
-     *
-    public void onButtonPressed(int position) {
-        if (mainActivity != null) {
-            mainActivity.onPiirustuksetOhjeetInteraction(position);
-        }
-    }
-*/
-
     /* Rajapinta, jonka MainActivity toteuttaa. Mahdollistaa Fragmentin ja MainActivityn välisen
      * tiedonsiirron (sopimus rajapinnan toteuttamisesta --> metodi, jota voidaan aina kutsua).
      */
-    public interface OnPiirustuksetOhjeetInteractionListener {
-        public void onPiirustuksetOhjeetGridSelected(int position);
-        public void onPiirustuksetOhjeetSearch(String search);
+    public interface OnTyomaaInteractionListener {
+        public void onTyomaaGridSelected(int position);
+        public void onTyomaaSearch(String search);
     }
 
-    // Pitää kutsua heti luomisen jälkeen.
+    // Pitää kutsua heti olion luomisen jälkeen.
     public void setWorkSites(ArrayList<Worksite> workSites) {
         this.workSites = workSites;
     }

@@ -1,4 +1,5 @@
 package com.example.android.horizontalpaging;
+
 // Lähde: http://stackoverflow.com/questions/6186753/android-how-to-put-the-text-below-the-image-in-grid-view
 import android.content.Context;
 import android.view.LayoutInflater;
@@ -12,20 +13,27 @@ import android.widget.TextView;
 import java.util.ArrayList;
 
 /**
- * Created by Samuli on 1.5.2015.
+ * Created by Samuli on 2.5.2015.
  */
 public class PiirustuksetOhjeetAdapter extends BaseAdapter {
     private Context context;
-    private ArrayList<Worksite> worksites;
+    private Worksite worksite;
+    private int elementType;
 
-    public PiirustuksetOhjeetAdapter(Context c, ArrayList<Worksite> workSites) {
+    public PiirustuksetOhjeetAdapter(Context c, Worksite worksite, int elementType) {
 
         context = c;
-        this.worksites = workSites;
+        this.worksite = worksite;
+        this.elementType = elementType;
     }
 
     public int getCount() {
-        return filePictures.length;
+        if(elementType == 1)
+            return worksite.getDrawings().size();
+        else if(elementType == 2)
+            return worksite.getInstructions().size();
+        else
+            return 0;
     }
 
     public Object getItem(int position) {
@@ -39,51 +47,48 @@ public class PiirustuksetOhjeetAdapter extends BaseAdapter {
     public View getView(int position, View convertView, ViewGroup parent) {
         View view;
 
-        if(convertView == null) {
+        if (convertView == null) {
             LayoutInflater inflater = LayoutInflater.from(context);
-            view = inflater.inflate(R.layout.file_image, null);
+            view = inflater.inflate(R.layout.drawing_instruction_image, null);
 
-            ImageView imageView = (ImageView)view.findViewById(R.id.file_image);
-            imageView.setImageResource(filePictures[position]);
+            ImageView imageView = (ImageView)view.findViewById(R.id.drawing_instruction_image);
+            TextView textView = (TextView)view.findViewById(R.id.drawing_instruction_text);
+
+            switch(elementType) {
+                case 1:
+                    imageView.setImageResource(worksite.getDrawings().get(position).getDrawingId());
+                    textView.setText(worksite.getDrawings().get(position).getTitle());
+                    break;
+                case 2:
+                    imageView.setImageResource(worksite.getInstructions().get(position).getInstructionId());
+                    textView.setText(worksite.getInstructions().get(position).getTitle());
+                    break;
+                default:
+            }
+
+            /*
+            Worksite worksite = worksites.get(position);
+            Drawing drawing = worksite.getDrawings().get(position);
+
+
+            ImageView imageView = (ImageView) view.findViewById(R.id.file_image);
+            imageView.setImageResource(worksites.get(position).getFileImage());  // Oli suora resurssiviite.
 
             //imageView.setScaleType(ImageView.ScaleType.FIT_XY);
 
-            TextView textView = (TextView)view.findViewById(R.id.file_text);
-            textView.setText(fileTexts[position]);
-
+            TextView textView = (TextView) view.findViewById(R.id.file_text);
+            textView.setText(worksites.get(position).getName());
+            */
             /*
             imageView = new ImageView(mContext);
             imageView.setLayoutParams(new GridView.LayoutParams(150, 150));
             imageView.setScaleType(ImageView.ScaleType.CENTER_CROP);
             imageView.setPadding(2, 2, 2, 2);
             */
-        }
-        else {
+        } else {
             view = convertView;
         }
 
         return view;
     }
-
-    // Kansioiden kuvat Piirustukset ja Ohjeet -osioon.
-    private Integer[] filePictures = {
-            R.drawable.file_512x512,
-            R.drawable.file_512x512,
-            R.drawable.file_512x512,
-            R.drawable.file_512x512,
-            R.drawable.file_512x512,
-            R.drawable.file_512x512,
-            R.drawable.file_512x512,
-            R.drawable.file_512x512,
-            R.drawable.file_512x512,
-            R.drawable.file_512x512,
-            R.drawable.file_512x512,
-            R.drawable.file_512x512,
-            R.drawable.file_512x512,
-            R.drawable.file_512x512,
-            R.drawable.file_512x512
-    };
-
-    private String[] fileTexts = {"kuva1", "kuva2","kuva3","kuva4","kuva5","kuva6","kuva7","kuva8",
-            "kuva9","kuva10","kuva11","kuva12","kuva13","kuva14","kuva15"};
 }
