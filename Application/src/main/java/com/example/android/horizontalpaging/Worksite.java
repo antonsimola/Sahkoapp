@@ -30,6 +30,39 @@ public class Worksite implements Serializable {
         this.fileImage = fileImage;
     }
 
+    /* Etsii anettua otsikkoa jokseenkin (String.contains()) vastaavat piirustukset. Voi palauttaa
+     * tyhjän listan (empty).
+     */
+    public ArrayList<Drawing> findDrawings(String title) {
+        ArrayList<Drawing> foundDrawings = new ArrayList<>();
+
+        for(Drawing drawing : drawings) {
+            if(drawing.getTitle().toLowerCase().contains(title.toLowerCase())) {
+                foundDrawings.add(drawing);
+                //System.out.println("LÖYTYI " + drawing.getTitle());
+
+            }
+        }
+
+        return foundDrawings;
+    }
+
+    /* Etsii anettua otsikkoa jokseenkin (String.contains()) vastaavat ohjeet. Voi palauttaa
+     * tyhjän listan (empty).
+     */
+    public ArrayList<Instruction> findInstructions(String title) {
+        ArrayList<Instruction> foundInstructions = new ArrayList<>();
+
+        for(Instruction instruction : instructions) {
+            if(instruction.getTitle().toLowerCase().contains(title.toLowerCase())) {
+                foundInstructions.add(instruction);
+                //System.out.println("LÖYTYI " + instruction.getTitle());
+            }
+        }
+
+        return foundInstructions;
+    }
+
     public String getName() {
         return name;
     }
@@ -48,5 +81,15 @@ public class Worksite implements Serializable {
 
     public ArrayList<Drawing> getDrawings() {
         return drawings;
+    }
+
+    public void setDrawings(ArrayList<Drawing> drawings) {
+        this.drawings.clear();
+        this.drawings = drawings;
+    }
+
+    public void setInstructions(ArrayList<Instruction> instructions) {
+        this.instructions.clear();
+        this.instructions = instructions;
     }
 }

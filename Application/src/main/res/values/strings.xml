@@ -11,11 +11,13 @@
 <!-- TODO: Remove or change this placeholder text -->
     <string name="hello_blank_fragment">Hello blank fragment</string>
     <string name="tyomaa_search_view">Haettava työmaa</string>
-    <string name="tyomaa_button">Hae</string>
+    <string name="tyomaa_search_button">Hae</string>
     <string name="title_activity_piirustukset_ohjeet">PiirustuksetOhjeetActivity</string>
 
     <string name="hello_world">Hello world!</string>
     <string name="piirustukset_ohjeet_search_view">Hae piirustus tai ohje</string>
-    <string name="piirustukset_ohjeet_button">Hae</string>
+    <string name="piirustukset_ohjeet_search_button">Hae</string>
+    <string name="piirustukset_ohjeet__reset_search_button">Peruuta haku</string>
+    <string name="tyomaa_reset_search_button">Peruuta haku</string>
 
 </resources>

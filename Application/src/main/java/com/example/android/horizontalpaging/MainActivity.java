@@ -176,8 +176,9 @@ public class MainActivity extends FragmentActivity implements ActionBar.TabListe
                 case 2:
                     TyomaaFragment tyomaaFragment = new TyomaaFragment();
 
-                    // Tyomaat täytyy asettaa erikseen heti olion luomisen jälkeen.
-                    tyomaaFragment.setWorkSites(worksiteControl.getWorksites());
+                    // Täytyy asettaa erikseen heti olion luomisen jälkeen.
+                    tyomaaFragment.setWorksiteControl(worksiteControl);
+
                     return tyomaaFragment;
                 case 3:
                     return new DummyFragment();
@@ -252,11 +253,5 @@ public class MainActivity extends FragmentActivity implements ActionBar.TabListe
         // perusteella rakennetaan fragmenttien sisältö (piirustukset ja ohjeet työmaalle).
         intent.putExtra(DRAWINGS_INSTRUCTIONS_MESSAGE, worksiteControl.getWorksites().get(position));
         startActivity(intent);
-    }
-
-    @Override
-    public void onTyomaaSearch(String search) {
-        System.out.println("MainActivity: " + search);
-
     }
 }

@@ -23,7 +23,9 @@ public class TyomaaFragment extends Fragment {
     private OnTyomaaInteractionListener mainActivity;  // Viite MainActivityyn (tiedonsiirto).
 
     private TyomaaAdapter tyomaaAdapter;  // Muodostaa gridiin (GridView) kansioita.
-    private ArrayList<Worksite> workSites;  // Kaikki tyomaat.
+    private ArrayList<Worksite> worksites;  // Kaikki tyomaat.
+    private WorksiteControl worksiteControl;
+    private GridView gridView;
 
     public TyomaaFragment() {
 
@@ -34,20 +36,24 @@ public class TyomaaFragment extends Fragment {
                              Bundle savedInstanceState) {
         final View rootView = inflater.inflate(R.layout.fragment_tyomaa, container, false);
 
+        // Kaikki työmaat kontrolliluokan oliolta.
+        worksites = worksiteControl.getWorksites();
+
         // Hakupainike työmaahaulle.
-        Button searchButton = (Button)rootView.findViewById(R.id.tyomaa_button);
+        Button searchButton = (Button)rootView.findViewById(R.id.tyomaa_search_button);
+        Button resetSearchButton = (Button)rootView.findViewById(R.id.tyomaa_reset_search_button);
 
         // Etsitään matriisi (GridView) XML-tiedosta.
-        GridView gridview = (GridView)rootView.findViewById(R.id.tyomaa_grid_view);
+        gridView = (GridView)rootView.findViewById(R.id.tyomaa_grid_view);
 
-        tyomaaAdapter = new TyomaaAdapter(rootView.getContext(), workSites);
+        tyomaaAdapter = new TyomaaAdapter(rootView.getContext(), worksites);
 
         // Asetataan matriisille (GridView) adapteri, jonka avulla syötetään matriisiin kuvat.
-        gridview.setAdapter(tyomaaAdapter);
+        gridView.setAdapter(tyomaaAdapter);
 
 
         // Tapahtumankuuntelija matriisille (kansion valitseminen).
-        gridview.setOnItemClickListener(new AdapterView.OnItemClickListener() {
+        gridView.setOnItemClickListener(new AdapterView.OnItemClickListener() {
             @Override
             public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
                 mainActivity.onTyomaaGridSelected(position);
@@ -60,7 +66,24 @@ public class TyomaaFragment extends Fragment {
             public void onClick(View v) {
                 SearchView searchText = (SearchView)rootView.findViewById(
                         R.id.tyomaa_search_view);
-                mainActivity.onTyomaaSearch(searchText.getQuery().toString());
+
+                performWorksiteSearch(searchText.getQuery().toString(), rootView);
+
+            }
+        });
+
+        // Tapahtumankuuntelija haun peruuttamiselle (kaikki kansiot näkyviin).
+        resetSearchButton.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                // Tyhjennetään hakukenttä.
+                SearchView searchText = (SearchView)rootView.findViewById(
+                        R.id.tyomaa_search_view);
+                searchText.setQuery("", true);
+
+                // Alustetaan adapteri uudestaan.
+                tyomaaAdapter = new TyomaaAdapter(rootView.getContext(), worksites);
+                gridView.setAdapter(tyomaaAdapter);
 
             }
         });
@@ -91,16 +114,31 @@ public class TyomaaFragment extends Fragment {
         mainActivity = null;
     }
 
+    private void performWorksiteSearch(String name, View view) {
+        ArrayList<Worksite> foundWorksites = worksiteControl.findWorksites(name);
+
+        if(!foundWorksites.isEmpty()) {
+            // Läydettiin hakua vastaavia työmaita. Asetetaan uusi XML-sisältö.
+            tyomaaAdapter = new TyomaaAdapter(view.getContext(),foundWorksites);
+            gridView.setAdapter(tyomaaAdapter);
+        }
+
+        /*
+        for(Worksite worksite : foundWorksites) {
+            System.out.println(worksite.getName());
+        }
+        */
+    }
+
+    // Pitää kutsua heti olion luomisen jälkeen.
+    public void setWorksiteControl(WorksiteControl worksiteControl) {
+        this.worksiteControl = worksiteControl;
+    }
+
     /* Rajapinta, jonka MainActivity toteuttaa. Mahdollistaa Fragmentin ja MainActivityn välisen
      * tiedonsiirron (sopimus rajapinnan toteuttamisesta --> metodi, jota voidaan aina kutsua).
      */
     public interface OnTyomaaInteractionListener {
         public void onTyomaaGridSelected(int position);
-        public void onTyomaaSearch(String search);
-    }
-
-    // Pitää kutsua heti olion luomisen jälkeen.
-    public void setWorkSites(ArrayList<Worksite> workSites) {
-        this.workSites = workSites;
     }
 }

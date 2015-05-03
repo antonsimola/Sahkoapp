@@ -51,6 +51,20 @@ public class WorksiteControl implements Serializable{
         return instructions;
     }
 
+    // Etsii anettua nimeä jokseenkin (String.contains()) vastaavat työmaat. Voi palauttaa tyhjän listan (empty).
+    public ArrayList<Worksite> findWorksites(String name) {
+        ArrayList<Worksite> foundWorksites = new ArrayList<>();
+
+        for(Worksite worksite : worksites) {
+            if(worksite.getName().toLowerCase().contains(name.toLowerCase())) {
+                foundWorksites.add(worksite);
+
+            }
+        }
+
+        return foundWorksites;
+    }
+
     public ArrayList<Worksite> getWorksites() {
         return worksites;
     }
