@@ -16,7 +16,12 @@ import java.util.Calendar;
  */
 public class TimePickerFragment extends DialogFragment
         implements TimePickerDialog.OnTimeSetListener {
-
+    boolean aloitus = true;
+    public void setAloitus(boolean bool) {
+        // Onko tämä datepicker tarkoitettu aloitus-vai lopetusajankohdan valitsemiseen
+        //Muista kutsua ennen dialogin esittämistä!
+        aloitus = bool;
+    }
     @Override
     public Dialog onCreateDialog(Bundle savedInstanceState) {
         // Use the current time as the default values for the picker
@@ -30,11 +35,16 @@ public class TimePickerFragment extends DialogFragment
     }
 
     public void onTimeSet(TimePicker view, int hourOfDay, int minute) {
-        TextView textAloitus =(TextView) getActivity().findViewById(R.id.text_start);
+        TextView text;
+        if (aloitus) {
+            text =(TextView) getActivity().findViewById(R.id.text_start);
+        } else {
+            text =(TextView) getActivity().findViewById(R.id.text_finish);
+        }
         if (minute < 10) {
-            textAloitus.setText(textAloitus.getText() + " klo " + hourOfDay + ":0" + minute);
+            text.setText(text.getText() + " klo " + hourOfDay + ":0" + minute);
         } else{
-            textAloitus.setText(textAloitus.getText() + " " + hourOfDay + ":" + minute);
+            text.setText(text.getText() + " " + hourOfDay + ":" + minute);
         }
     }
 }

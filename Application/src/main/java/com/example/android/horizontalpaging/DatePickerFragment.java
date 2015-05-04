@@ -14,11 +14,15 @@ import java.util.Calendar;
  */
 public class DatePickerFragment extends DialogFragment
         implements DatePickerDialog.OnDateSetListener {
-    boolean aloitusaika;
+    boolean aloitus = true;
     public DatePickerFragment() {
 
     }
-
+    public void setAloitus(boolean bool) {
+        // Onko tämä datepicker tarkoitettu aloitus-vai lopetusajankohdan valitsemiseen
+        //Muista kutsua ennen dialogin esittämistä!
+        aloitus = bool;
+    }
     @Override
     public Dialog onCreateDialog(Bundle savedInstanceState) {
         // Use the current date as the default date in the picker
@@ -32,9 +36,16 @@ public class DatePickerFragment extends DialogFragment
     }
 
     public void onDateSet(DatePicker view, int year, int month, int day) {
-        TextView textAloitus =(TextView) getActivity().findViewById(R.id.text_start);
-        textAloitus.setText(day+"." + month +"."+ year);
-        DialogFragment newFragment = new TimePickerFragment();
+        TextView text;
+        if (aloitus) {
+            text =(TextView) getActivity().findViewById(R.id.text_start);
+        } else {
+            text =(TextView) getActivity().findViewById(R.id.text_finish);
+        }
+
+        text.setText(day+"." + month +"."+ year);
+        TimePickerFragment newFragment = new TimePickerFragment();
+        newFragment.setAloitus(aloitus);
         newFragment.show(getFragmentManager(),"timePicker");
     }
 }

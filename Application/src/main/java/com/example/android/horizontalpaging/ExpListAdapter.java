@@ -1,6 +1,7 @@
 package com.example.android.horizontalpaging;
 
 import android.support.v4.app.Fragment;
+import android.text.Html;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -13,7 +14,7 @@ public class ExpListAdapter extends BaseExpandableListAdapter {
 
     private ArrayList<TyotehtavaOtsikko> data;
     private LayoutInflater minflater;
-    private Fragment frag;
+    private MainActivity activity;
 
     public ExpListAdapter(ArrayList<TyotehtavaOtsikko> data) {
         this.data = data;
@@ -21,7 +22,6 @@ public class ExpListAdapter extends BaseExpandableListAdapter {
 
     public void setInflater(LayoutInflater mInflater, Fragment frag) {
         this.minflater = mInflater;
-        this.frag = frag;
     }
 
     @Override
@@ -35,7 +35,7 @@ public class ExpListAdapter extends BaseExpandableListAdapter {
     }
 
     @Override
-    public View getChildView(int groupPosition, final int childPosition,
+    public View getChildView(final int groupPosition, final int childPosition,
                              boolean isLastChild, View convertView, ViewGroup parent) {
         TyotehtavaSisalto child = data.get(groupPosition).getSisalto();
 
@@ -55,11 +55,24 @@ public class ExpListAdapter extends BaseExpandableListAdapter {
         TextView osoite = (TextView) convertView.findViewById(R.id.osoite);
         osoite.setText(child.getOsoite());
         TextView linkki = (TextView) convertView.findViewById(R.id.ohj_piir_linkki);
-        linkki.setText(child.getOhjPiirLinkki());
+
+        String htmlString="<u>"+child.getOhjPiirLinkki()+"</u>";
+
+        linkki.setText(Html.fromHtml(htmlString));
+
+        linkki.setClickable(true);
+        linkki.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                activity.onTyomaaGridSelected(groupPosition);
+            }
+        });
 
         return convertView;
     }
-
+    public void setActivity(MainActivity a){
+        activity = a;
+    }
     @Override
     public int getChildrenCount(int groupPosition) {
         return 1;

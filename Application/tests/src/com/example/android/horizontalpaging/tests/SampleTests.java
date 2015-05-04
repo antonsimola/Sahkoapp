@@ -15,9 +15,9 @@
 */
 package com.example.android.horizontalpaging.tests;
 
-import com.example.android.horizontalpaging.*;
-
 import android.test.ActivityInstrumentationTestCase2;
+
+import com.example.android.horizontalpaging.MainActivity;
 
 /**
 * Tests for HorizontalPaging sample.

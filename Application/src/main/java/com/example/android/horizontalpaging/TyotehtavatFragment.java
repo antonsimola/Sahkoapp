@@ -1,7 +1,6 @@
 package com.example.android.horizontalpaging;
 
 import android.os.Bundle;
-import android.support.v4.app.DialogFragment;
 import android.support.v4.app.Fragment;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -9,10 +8,8 @@ import android.view.ViewGroup;
 import android.widget.AdapterView;
 import android.widget.ArrayAdapter;
 import android.widget.Button;
-import android.widget.ExpandableListAdapter;
 import android.widget.ExpandableListView;
 import android.widget.ListPopupWindow;
-import android.widget.ListView;
 import android.widget.TextView;
 
 import java.util.ArrayList;
@@ -23,6 +20,7 @@ import java.util.ArrayList;
 public class TyotehtavatFragment extends Fragment implements AdapterView.OnItemClickListener {
     ArrayList<String> employees;
     ListPopupWindow lpw;
+
     @Override
 
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
@@ -34,7 +32,10 @@ public class TyotehtavatFragment extends Fragment implements AdapterView.OnItemC
         View rootView = inflater.inflate(R.layout.fragment_tyotehtavat, container, false);
         ExpandableListView elv = (ExpandableListView) rootView.findViewById(R.id.list_tyotehtavat);
         ExpListAdapter adapter = new ExpListAdapter(luoData());
-        adapter.setInflater(inflater,this);
+        MainActivity act = (MainActivity) getActivity();
+        adapter.setActivity(act);
+        adapter.setInflater(inflater, this);
+
         elv.setAdapter(adapter);
         // http://www.informit.com/articles/article.aspx?p=2078060&seqNum=4
         Button btn = (Button) rootView.findViewById(R.id.btn_addemployee);
@@ -72,7 +73,7 @@ public class TyotehtavatFragment extends Fragment implements AdapterView.OnItemC
         sisalto.setYhteyshenkilo("Makkonen");
         sisalto.setMuuta("");
         sisalto.setOsoite("LUT");
-        sisalto.setOhjPiirLinkki("LINKKI");
+        sisalto.setOhjPiirLinkki("Liittyvät piirustukset ja ohjeet");
 
         for (TyotehtavaOtsikko alkio:data){
             alkio.setSisalto(sisalto);
@@ -80,6 +81,7 @@ public class TyotehtavatFragment extends Fragment implements AdapterView.OnItemC
 
         return data;
     }
+
     @Override
     public void onItemClick(AdapterView<?> parent, View view,
                             int position, long id) {

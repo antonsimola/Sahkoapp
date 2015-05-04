@@ -5,26 +5,19 @@ import android.app.FragmentTransaction;
 import android.content.Context;
 import android.content.Intent;
 import android.os.Bundle;
-import android.support.v4.app.DialogFragment;
 import android.support.v4.app.Fragment;
 import android.support.v4.app.FragmentActivity;
 import android.support.v4.app.FragmentManager;
 import android.support.v4.app.FragmentPagerAdapter;
 import android.support.v4.view.ViewPager;
-import android.support.v7.widget.RecyclerView;
-import android.util.Log;
-import android.view.LayoutInflater;
 import android.view.View;
-import android.view.ViewGroup;
-import android.widget.TextView;
 import android.widget.Toast;
 
-import java.util.ArrayList;
 import java.util.Locale;
 
 public class MainActivity extends FragmentActivity implements ActionBar.TabListener,
         TyomaaFragment.OnTyomaaInteractionListener {
-
+    private boolean loggedIn = false;
     private WorksiteControl worksiteControl;
 
     public final static String DRAWINGS_INSTRUCTIONS_MESSAGE =
@@ -61,6 +54,10 @@ public class MainActivity extends FragmentActivity implements ActionBar.TabListe
         super.onCreate(savedInstanceState);
         // Load the UI from res/layout/activity_main.xml
         setContentView(R.layout.sample_main);
+        if (!loggedIn) {
+            View view = new View(this);
+            showLoginDialog(view);
+        }
 
         worksiteControl = new WorksiteControl(10);  // Luodaan 10 työmaata.
 
@@ -107,7 +104,8 @@ public class MainActivity extends FragmentActivity implements ActionBar.TabListe
                             .setText(mSectionsPagerAdapter.getPageTitle(i))
                             .setTabListener(this));
         }
-        // END_INCLUDE (add_tabs)
+        //Sovellus käynnistyy uutiset näkymään
+        mViewPager.setCurrentItem(1);
     }
 
     /**
@@ -167,7 +165,9 @@ public class MainActivity extends FragmentActivity implements ActionBar.TabListe
             // below) with the page number as its lone argument.
             switch (position){
                 case 0:
-                    return new TyotehtavatFragment();
+                    TyotehtavatFragment tyotehtavat = new TyotehtavatFragment();
+
+                    return tyotehtavat;
                 case 1:
                     //Tässä laitetaan tuo viewPager olio messiin tuolle uutisetFragmentille
                     UutisetFragment uutiset = new UutisetFragment();
@@ -181,7 +181,7 @@ public class MainActivity extends FragmentActivity implements ActionBar.TabListe
 
                     return tyomaaFragment;
                 case 3:
-                    return new DummyFragment();
+                    return new AsetuksetFragment();
             }
 
             return null;
@@ -228,7 +228,12 @@ public class MainActivity extends FragmentActivity implements ActionBar.TabListe
 
     public void showDatePickerDialog(View v) {
         //TÄHÄN PITÄISI SAADA TOISEN NAPIN PAINALLUS MUKAAN
-        DialogFragment newFragment = new DatePickerFragment();
+        DatePickerFragment newFragment = new DatePickerFragment();
+        if (v.getId() == R.id.btn_setfinish) {
+            newFragment.setAloitus(false);
+        } else {
+            newFragment.setAloitus(true);
+        }
         newFragment.show(getSupportFragmentManager(),"datePicker");
     }
     public void showToast(View v) {
@@ -253,5 +258,14 @@ public class MainActivity extends FragmentActivity implements ActionBar.TabListe
         // perusteella rakennetaan fragmenttien sisältö (piirustukset ja ohjeet työmaalle).
         intent.putExtra(DRAWINGS_INSTRUCTIONS_MESSAGE, worksiteControl.getWorksites().get(position));
         startActivity(intent);
+    }
+
+    public void showLoginDialog(View v) {
+        LoginDialogFragment dialog = new LoginDialogFragment();
+        dialog.show(getSupportFragmentManager(),"Login Dialog");
+    }
+
+    public void setLoggedIn(boolean b) {
+        loggedIn = b;
     }
 }

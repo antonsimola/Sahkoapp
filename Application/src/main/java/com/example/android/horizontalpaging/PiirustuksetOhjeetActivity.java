@@ -2,16 +2,11 @@ package com.example.android.horizontalpaging;
 
 // Lähde: http://developer.android.com/training/basics/fragments/fragment-ui.html
 
-import android.content.Intent;
-import android.net.Uri;
 import android.os.Bundle;
-
-// Huom. support-kirjasto (ei android.app...).
-import android.support.v4.app.FragmentActivity;
 import android.support.v4.app.Fragment;
+import android.support.v4.app.FragmentActivity;
 import android.support.v4.app.FragmentManager;
 import android.support.v4.app.FragmentTransaction;
-
 import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
@@ -21,6 +16,8 @@ import android.widget.GridView;
 import android.widget.SearchView;
 
 import java.util.ArrayList;
+
+// Huom. support-kirjasto (ei android.app...).
 
 public class PiirustuksetOhjeetActivity extends FragmentActivity implements
         PiirustusOhjeFragment.OnPiirustusOhjeInteractionListener{

@@ -1,7 +1,6 @@
 package com.example.android.horizontalpaging;
 
 import java.io.Serializable;
-import java.lang.reflect.Array;
 import java.util.ArrayList;
 
 /**
