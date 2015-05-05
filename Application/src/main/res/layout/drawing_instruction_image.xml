@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="utf-8"?>
 <RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
     android:id="@+id/drawing_instruction_full_image"
-    android:orientation="vertical"
+    android:orientation="horizontal"
     android:layout_width="wrap_content"
     android:layout_height="wrap_content">
 
@@ -9,11 +9,12 @@
         android:id="@+id/drawing_instruction_image"
         android:layout_width="wrap_content"
         android:layout_height="80dp"
-        android:layout_centerInParent="true"/>
+        android:paddingBottom="30dp"
+        />
 
     <TextView
         android:id="@+id/drawing_instruction_text"
-
+        android:textColor="#FFF"
         android:layout_alignBottom="@+id/drawing_instruction_image"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"

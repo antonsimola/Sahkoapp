@@ -17,6 +17,7 @@
         android:id="@+id/ohje_text_view"
         android:text=""
         android:layout_gravity="center"
+
         android:paddingBottom="50dp"
         android:textColor="#FFFFFF"
         android:layout_width="wrap_content"
