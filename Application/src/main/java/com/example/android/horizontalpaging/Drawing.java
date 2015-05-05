@@ -8,11 +8,12 @@ import java.io.Serializable;
 public class Drawing implements Serializable{
     private String title;
     private Integer drawingId;
-    //...
+    private Integer actualDrawingID;
 
-    public Drawing(String title, Integer drawingId) {
+    public Drawing(String title, Integer drawingId, Integer actualDrawingId) {
         this.title = title;
         this.drawingId = drawingId;
+        this.actualDrawingID = actualDrawingId;
 
     }
 
@@ -22,5 +23,9 @@ public class Drawing implements Serializable{
 
     public Integer getDrawingId() {
         return drawingId;
+    }
+
+    public Integer getActualDrawingID() {
+        return actualDrawingID;
     }
 }
