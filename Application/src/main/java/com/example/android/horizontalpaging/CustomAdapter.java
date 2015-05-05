@@ -14,7 +14,8 @@ import java.util.List;
  */
 public class CustomAdapter extends RecyclerView.Adapter<CustomAdapter.NewsViewHolder>{
     List<News> news;
-    public static class NewsViewHolder extends RecyclerView.ViewHolder {
+    public static class NewsViewHolder extends RecyclerView.ViewHolder
+    {
         CardView cv;
         TextView row1;
         TextView row2;
@@ -29,20 +30,22 @@ public class CustomAdapter extends RecyclerView.Adapter<CustomAdapter.NewsViewHo
     CustomAdapter(List<News> news){
         this.news = news;
     }
-
     @Override
-    public NewsViewHolder onCreateViewHolder(ViewGroup viewGroup, int i) {
+    public NewsViewHolder onCreateViewHolder(ViewGroup viewGroup, int i)
+    {
         View v = LayoutInflater.from(viewGroup.getContext()).inflate(R.layout.item, viewGroup, false);
         NewsViewHolder nvh = new NewsViewHolder(v);
         return nvh;
     }
     @Override
-    public void onBindViewHolder(NewsViewHolder personViewHolder, int i) {
+    public void onBindViewHolder(NewsViewHolder personViewHolder, int i)
+    {
         personViewHolder.row1.setText(news.get(i).row1);
         personViewHolder.row2.setText(news.get(i).row2);
     }
     @Override
-    public void onAttachedToRecyclerView(RecyclerView recyclerView) {
+    public void onAttachedToRecyclerView(RecyclerView recyclerView)
+    {
         super.onAttachedToRecyclerView(recyclerView);
     }
     @Override

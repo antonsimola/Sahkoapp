@@ -1,9 +1,6 @@
 package com.example.android.horizontalpaging;
 
-/**
- * Created by Anton on 2.4.2015.
- * Edited by jayy998
- */
+
 
 import android.os.Bundle;
 import android.support.v4.app.Fragment;
@@ -21,13 +18,13 @@ import java.util.List;
 
 /**
  * Created by Anton on 2.4.2015.
+ * Edited by jayy998
  */
 public class UutisetFragment extends Fragment  {
     View rootView;
     private List<News> news;
     private RecyclerView rv;
     ViewPager mViewPager;
-    boolean click = true;
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
@@ -45,8 +42,7 @@ public class UutisetFragment extends Fragment  {
                         }
                         else
                         {
-                            // TODO: PopupWindow with the content of the clicked card
-                            // Currently only testing toasts :(
+                            // Debug with Toasts
                             String txt = "CardID: " + position;
                             Toast toast = Toast.makeText(rootView.getContext(), txt, Toast.LENGTH_SHORT);
                             toast.show();
@@ -62,19 +58,22 @@ public class UutisetFragment extends Fragment  {
     {
         news = new ArrayList<>();
         news.add(new News("Ei uusia työtehtäviä", "Mene työlistaan."));
-        news.add(new News("21.4 Kahvi loppu", "Johtajien kupeista kahviloppu. Sihteeri tuo kahvia kokoustilaan pikimmiten."));
-        news.add(new News("20.4 Harrilla taas se aika kuusta.", "Johtajien kupeista kahviloppu. Sihteeri tuo kahvia kokoustilaan pikimmiten."));
-        news.add(new News("19.4 Harrilla taas se aika kuusta.", "Informaatioluontoista asiaa kaikille. Olkaa varovaisia ollessanne Harrin seurassa."));
-        news.add(new News("18.4 Rahat loppu. Ei palkkaa tässä kuussa.", "Palkan maksua jatketaan, kun laskutettavista töistä on saatu rahat."));
-        news.add(new News("17.4 Miialla syntymäpäivät huomenna!", "Onnitelkaa sitä söpöä harjoittelijaa ja tulkaa kahvittelemaan pääkonttorille."));
-        news.add(new News("16.4 Sähköappi buginen!", "Huomio huomio! Ne meidän koodari pingviinit eivät ole osanneet käyttää javaa... yllätys."));
-        news.add(new News("15.4 Firman yhteinen piknikki.", "Lähdetään yhdessä piknikille Lauantaina. Tuokaa itse ruuat ja juomat."));
-        news.add(new News("14.4 Sadevaatteet duunareille.", "Käykää nyt ihmeessä hakemassa sadevaatteet. (Omaan piikkiin tietenki)"));
-        news.add(new News("13.4 Toimistotäti Maisa lopetti työt.", "Maisa lopetti työt, koska sai nigerialaiselta prinssiltä perintöä."));
-        news.add(new News("12.4 Mulla tylsää!", "Tulkaa moikkaa minnuu toimistolle. xD t. miia xoxo"));
-        news.add(new News("12.4 Tämä on uutinen!", "En keksinyt muuta..."));
+        news.add(new News("7.5 Kahvi loppu", "Johtajien kupeista kahviloppu. Sihteeri tuo kahvia kokoustilaan pikimmiten."));
+        news.add(new News("7.5 Harrilla taas se aika kuusta.", "Johtajien kupeista kahviloppu. Sihteeri tuo kahvia kokoustilaan pikimmiten."));
+        news.add(new News("6.5 Harrilla taas se aika kuusta.", "Informaatioluontoista asiaa kaikille. Olkaa varovaisia ollessanne Harrin seurassa."));
+        news.add(new News("6.5 Rahat loppu. Ei palkkaa tässä kuussa.", "Palkan maksua jatketaan, kun laskutettavista töistä on saatu rahat."));
+        news.add(new News("5.5 Miialla syntymäpäivät huomenna!", "Onnitelkaa sitä söpöä harjoittelijaa ja tulkaa kahvittelemaan pääkonttorille."));
+        news.add(new News("5.5 Sähköappi buginen!", "Huomio huomio! Ne meidän koodari pingviinit eivät ole osanneet käyttää javaa... yllätys."));
+        news.add(new News("4.5 Firman yhteinen piknikki.", "Lähdetään yhdessä piknikille Lauantaina. Tuokaa itse ruuat ja juomat."));
+        news.add(new News("1.5 Sadevaatteet duunareille.", "Käykää nyt ihmeessä hakemassa sadevaatteet. (Omaan piikkiin tietenki)"));
+        news.add(new News("1.5 Toimistotäti Maisa lopetti työt.", "Maisa lopetti työt, koska sai nigerialaiselta prinssiltä perintöä."));
+        news.add(new News("30.4 Mulla tylsää!", "Tulkaa moikkaa minnuu toimistolle. xD t. miia xoxo"));
+        news.add(new News("30.4 Tallinnaan", "Viime hetken vapautumisia viikonloppureissulle Tallinnaan. Ottakaa yhteyttä Miian."));
+        news.add(new News("29.4 Maisa & Miia", "Me ollaan Maisa ja Miia. Me ollaan teidän ihanat toimistotädit ;)"));
+        news.add(new News("28.4 Ensimmäinen uuutinen!", "Testiuutinen lorem ipsum etc"));
     }
-    private void initAdapter(){
+    private void initAdapter()
+    {
         CustomAdapter adapter = new CustomAdapter(news);
         rv.setAdapter(adapter);
     }

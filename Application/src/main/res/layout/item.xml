@@ -9,8 +9,7 @@
     <RelativeLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:padding="16dp"
-        >
+        android:padding="16dp">
 
         <TextView
             android:layout_width="wrap_content"
@@ -18,8 +17,7 @@
             android:id="@+id/row1"
             android:layout_alignParentTop="true"
             android:textSize="30sp"
-            android:textColor="#FFFFFF"
-            />
+            android:textColor="#FFFFFF"/>
 
         <TextView
             android:layout_width="wrap_content"
@@ -27,8 +25,7 @@
             android:id="@+id/row2"
             android:layout_below="@+id/row1"
             android:textColor="#FFFFFF"
-            android:textSize="16sp"
-            />
+            android:textSize="16sp"/>
 
     </RelativeLayout>
 
