@@ -1,3 +1,9 @@
+/* Tämä fragmentti näyttää käyttäjälle yksittäisen ohjeen/piirustuksen.
+ *
+ * Samuli Siitonen
+ * 5.5.2015
+ */
+
 package com.example.android.horizontalpaging;
 
 import android.app.Activity;
@@ -75,31 +81,22 @@ public class PiirustusOhjeFragment extends Fragment {
         Bundle bundle = getArguments();
 
         if(bundle.containsKey(PiirustuksetOhjeetActivity.DRAWING_MESSAGE)) {
+            // Fragmentin luonnin yhteydessä sille on annettu piirustus.
             Drawing drawing = (Drawing)bundle.get(PiirustuksetOhjeetActivity.DRAWING_MESSAGE);
-            imageView.setImageResource(drawing.getDrawingId());
+            imageView.setImageResource(drawing.getActualDrawingID());
+            imageView.setMinimumHeight(500);
+            imageView.setMinimumWidth(500);
             textView.setVisibility(View.INVISIBLE);
         }
         else if(bundle.containsKey(PiirustuksetOhjeetActivity.INSTRUCTION_MESSAGE)) {
+            // Fragmentin luonnin yhteydessä sille on annettu ohje.
             Instruction instruction = (Instruction)bundle.get(PiirustuksetOhjeetActivity.INSTRUCTION_MESSAGE);
             textView.setText(instruction.getText());
             imageView.setVisibility(View.INVISIBLE);
         }
-        /*
-        // Asetetaan piirustuksen/ohjeen kuva ja sisältö.
-        ImageView imageView = (ImageView)view.findViewById(R.id.piirustus_ohje_image_view);
-        imageView.setImageResource(R.drawable.file_512x512);
-        */
-
         return view;
     }
-/*
-    // TODO: Rename method, update argument and hook method into UI event
-    public void onButtonPressed(Uri uri) {
-        if (mListener != null) {
-            mListener.onFragmentInteraction(uri);
-        }
-    }
-*/
+
     @Override
     public void onAttach(Activity activity) {
         super.onAttach(activity);

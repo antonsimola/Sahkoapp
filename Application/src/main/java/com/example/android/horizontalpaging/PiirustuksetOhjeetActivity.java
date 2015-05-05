@@ -24,6 +24,7 @@ public class PiirustuksetOhjeetActivity extends FragmentActivity implements
 
     private Worksite worksite;
     private GridView drawingsGridView, instructionsGridView;
+
     public final static String INSTRUCTION_MESSAGE =
             "com.example.android.horizontal.INSTRUCTION";
     public final static String DRAWING_MESSAGE =
@@ -35,12 +36,6 @@ public class PiirustuksetOhjeetActivity extends FragmentActivity implements
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_piirustukset_ohjeet);
 
-        // Selvitetään haluttu työmaa, jolla on ohjeet ja piirustukset.
-        //Worksite worksite =
-                //(Worksite) getIntent().getSerializableExtra(MainActivity.DRAWINGS_INSTRUCTIONS_MESSAGE);
-
-
-
         // Tarkistetaan fragment xml-layoutin olemassaolo.
         //if (findViewById(R.id.piirustukset_ohjeet_main_linear_layout) != null) {
 
@@ -48,12 +43,7 @@ public class PiirustuksetOhjeetActivity extends FragmentActivity implements
         if (savedInstanceState != null) {
             //return;
         }
-/*  Testimuutos 3.5.2015
-        // Luodaan uusi fragmentti (ohjeet ja piirustukset).
-        piirustuksetOhjeetFragment = new PiirustuksetOhjeetFragment();
-        Bundle bundle = getIntent().getExtras();
-        createFragment(piirustuksetOhjeetFragment, R.id.fragment_test, bundle);
-*/
+
        // }
 
         SearchView searchView = (SearchView)findViewById(R.id.piirustukset_ohjeet_search_view);
@@ -65,7 +55,6 @@ public class PiirustuksetOhjeetActivity extends FragmentActivity implements
         drawingsGridView = (GridView)findViewById(R.id.piirustukset_grid_view);
         instructionsGridView = (GridView)findViewById(R.id.ohjeet_grid_view);
 
-        //Bundle bundle = getArguments();
         Bundle bundle = getIntent().getExtras();
 
         worksite = (Worksite)bundle.getSerializable(MainActivity.DRAWINGS_INSTRUCTIONS_MESSAGE);
@@ -73,6 +62,7 @@ public class PiirustuksetOhjeetActivity extends FragmentActivity implements
         drawingsGridView.setAdapter(new PiirustuksetOhjeetAdapter(this, worksite, 1));
         instructionsGridView.setAdapter(new PiirustuksetOhjeetAdapter(this, worksite, 2));
 
+        // Tapahtumankuuntelija piirrustuksia sisältävän matriisin alkioille.
         drawingsGridView.setOnItemClickListener(new AdapterView.OnItemClickListener() {
             @Override
             public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
@@ -80,8 +70,7 @@ public class PiirustuksetOhjeetActivity extends FragmentActivity implements
             }
         });
 
-
-
+        // Tapahtumankuuntelija ohjeita sisältävän matriisin alkioille.
         instructionsGridView.setOnItemClickListener(new AdapterView.OnItemClickListener() {
             @Override
             public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
@@ -89,6 +78,7 @@ public class PiirustuksetOhjeetActivity extends FragmentActivity implements
             }
         });
 
+        // Tapahtumankuuntelija hakupainikkeelle (haetaan piirustus/ohje).
         searchButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
@@ -98,6 +88,7 @@ public class PiirustuksetOhjeetActivity extends FragmentActivity implements
             }
         });
 
+        // Tapahtumankuuntelija haun reset-painikkeelle (haettiin piirustus/ohje).
         resetSearchButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
@@ -135,22 +126,14 @@ public class PiirustuksetOhjeetActivity extends FragmentActivity implements
         return super.onOptionsItemSelected(item);
     }
 
+    // Tehdään haku piirustusten ja ohjeiden suhteen.
     private void performSearch(String title) {
-        //ArrayList<Drawing> existingDrawings = worksite.getDrawings();
-        //ArrayList<Instruction> existingInstructions = worksite.getInstructions();
 
         ArrayList<Drawing> foundDrawings = worksite.findDrawings(title);
         ArrayList<Instruction> foundInstructions = worksite.findInstructions(title);
 
 
         if(!foundDrawings.isEmpty()) {
-            /*
-            worksite.setDrawings(foundDrawings);
-
-            // Läydettiin hakua vastaavia piirustuksia. Asetetaan uusi XML-sisältö.
-            drawingsGridView.setAdapter(new PiirustuksetOhjeetAdapter(this, worksite, 1));
-            worksite.setDrawings(existingDrawings);
-            */
 
             // Läydettiin hakua vastaavia piirustuksia. Asetetaan uusi XML-sisältö.
             drawingsGridView.setAdapter(new PiirustuksetOhjeetAdapter(this,
@@ -161,12 +144,6 @@ public class PiirustuksetOhjeetActivity extends FragmentActivity implements
         }
 
         if(!foundInstructions.isEmpty()) {
-            /*
-            worksite.setInstructions(foundInstructions);
-            // Läydettiin hakua vastaavia ohjeita. Asetetaan uusi XML-sisältö.
-            instructionsGridView.setAdapter(new PiirustuksetOhjeetAdapter(this, worksite, 2));
-            worksite.setInstructions(existingInstructions);
-            */
 
             // Läydettiin hakua vastaavia ohjeita. Asetetaan uusi XML-sisältö.
             instructionsGridView.setAdapter(new PiirustuksetOhjeetAdapter(this, new Worksite(worksite.getName(), worksite.getDate(),
@@ -174,14 +151,6 @@ public class PiirustuksetOhjeetActivity extends FragmentActivity implements
             drawingsGridView.setAdapter(new PiirustuksetOhjeetAdapter(this, new Worksite(worksite.getName(), worksite.getDate(),
                     worksite.getFileImage(), new ArrayList<Drawing>(), null), 1));
         }
-
-        //SearchView search =  (SearchView)findViewById(R.id.piirustukset_ohjeet_search_view);
-        //performSearch(search.getQuery().toString());
-        //ArrayList<Drawing> existingDrawings = worksite.getDrawings();
-        //ArrayList<Instruction> existingInstructions = worksite.getInstructions();
-
-        //ArrayList<Drawing> foundDrawings = worksite.findDrawings(search.getQuery().toString());
-        //ArrayList<Instruction> foundInstructions = worksite.findInstructions(search.getQuery().toString());
     }
 
     // Käyttäjä valitsi piirustuksen matriisista (GridView).
@@ -210,19 +179,7 @@ public class PiirustuksetOhjeetActivity extends FragmentActivity implements
 
         transaction.remove(fragment).commit();
     }
-/*
-    // Luodaan fragmentti.
-    private void createFragment(Fragment fragment, Integer containerId, Bundle bundle) {
-        FragmentManager manager = getSupportFragmentManager();
-        FragmentTransaction transaction = manager.beginTransaction();
 
-        fragment.setArguments(bundle);
-
-        transaction.add(
-                R.id.fragment_test, fragment).addToBackStack(
-                fragment.getClass().getName()).commit();
-    }
-*/
     private void replaceFragment(Fragment fragment, Integer containerId, Bundle bundle) {
         FragmentManager manager = getSupportFragmentManager();
         FragmentTransaction transaction = manager.beginTransaction();
@@ -245,5 +202,4 @@ public class PiirustuksetOhjeetActivity extends FragmentActivity implements
     public void onPiirustusInteraction() {
 
     }
-
 }

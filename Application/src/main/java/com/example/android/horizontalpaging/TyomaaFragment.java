@@ -1,3 +1,8 @@
+/* Tämä fragmentti mahdollistaa työmaiden valitsemisen matriisimuotoisesta kansiorakenteesta.
+ *
+ * Samuli Siitonen
+ * 5.5.2015
+*/
 package com.example.android.horizontalpaging;
 
 // Lähde: http://developer.android.com/guide/topics/ui/layout/gridview.html
@@ -122,12 +127,6 @@ public class TyomaaFragment extends Fragment {
             tyomaaAdapter = new TyomaaAdapter(view.getContext(),foundWorksites);
             gridView.setAdapter(tyomaaAdapter);
         }
-
-        /*
-        for(Worksite worksite : foundWorksites) {
-            System.out.println(worksite.getName());
-        }
-        */
     }
 
     // Pitää kutsua heti olion luomisen jälkeen.

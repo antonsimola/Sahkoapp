@@ -1,3 +1,9 @@
+/* Tämä luokka kuvaa työmaata.
+ *
+ * Samuli Siitonen
+ * 5.5.2015
+ */
+
 package com.example.android.horizontalpaging;
 
 import java.io.Serializable;

@@ -1,3 +1,10 @@
+/* Tämä luokka luo uusia olioita työmaista. Työmaille luodaan piirustukset ja ohjeet olioita
+ * erillisiin tietorakenteisiin
+ *
+ * Samuli Siitonen
+ * 5.5.2015
+ */
+
 package com.example.android.horizontalpaging;
 
 import java.io.Serializable;
@@ -7,9 +14,6 @@ import java.util.ArrayList;
  * Created by Samuli on 2.5.2015.
  */
 public class WorksiteControl implements Serializable{
-    // Luon tällä työmaita, joilla on nimi, piirustuksia ja työohjeita. Piirustukset ja työohjeet
-    // tulevat olemaan erillisiä olioita ArrayList-tietorakenteessa.
-
     private ArrayList<Worksite> worksites;
 
     public WorksiteControl(int amount) {
@@ -23,7 +27,7 @@ public class WorksiteControl implements Serializable{
         // toteutuksia (mitä käyttäjä näkee).
         for(int i = 0; i < amount; i++)
             worksites.add(
-                    new Worksite("Tyomaa " + i, i + ".2", R.drawable.file_512x512,createDrawings(),
+                    new Worksite("Tyomaa " + (i + 1), i + ".2", R.drawable.file_512x512,createDrawings(),
                             createInstructions()));
     }
 
@@ -32,7 +36,8 @@ public class WorksiteControl implements Serializable{
         ArrayList<Drawing> drawings = new ArrayList<>();
 
         for(int i = 0; i < 5; i++) {
-            drawings.add(new Drawing("Piiri " + i, R.drawable.circuit_sample));
+            drawings.add(new Drawing("Piiri " + (i + 1), R.drawable.circuit_sample,
+                    R.drawable.circuit_schematic));
         }
         return drawings;
     }
@@ -44,7 +49,7 @@ public class WorksiteControl implements Serializable{
 
         for(int i = 0; i < 5; i++) {
             // Ohjeella on kuvateksti, kuva ja itse tekstimuotoinen ohje.
-            instructions.add(new Instruction("Ohje " + i, R.drawable.instruction_sample,
+            instructions.add(new Instruction("Ohje " + (i + 1), R.drawable.instruction_sample,
                     "Tämä on ohje."));
         }
         return instructions;

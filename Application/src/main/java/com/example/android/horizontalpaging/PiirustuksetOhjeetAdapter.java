@@ -19,7 +19,6 @@ public class PiirustuksetOhjeetAdapter extends BaseAdapter {
     private int elementType;
 
     public PiirustuksetOhjeetAdapter(Context c, Worksite worksite, int elementType) {
-
         context = c;
         this.worksite = worksite;
         this.elementType = elementType;
@@ -27,11 +26,13 @@ public class PiirustuksetOhjeetAdapter extends BaseAdapter {
 
     public int getCount() {
         if(elementType == 1)
+            // Muodostetaan piirustuksia --> halutaan piirusten määrä.
             return worksite.getDrawings().size();
         else if(elementType == 2)
+            // Muodostetaan ohjeita --> halutaan ohjeiden määrä.
             return worksite.getInstructions().size();
         else
-            return 0;
+            return 0;  // Annettu väärä 'elementType'
     }
 
     public Object getItem(int position) {
@@ -54,35 +55,17 @@ public class PiirustuksetOhjeetAdapter extends BaseAdapter {
 
             switch(elementType) {
                 case 1:
+                    // Muodostetaan piirustuksia.
                     imageView.setImageResource(worksite.getDrawings().get(position).getDrawingId());
                     textView.setText(worksite.getDrawings().get(position).getTitle());
                     break;
                 case 2:
+                    // Muodostetaan ohjeita.
                     imageView.setImageResource(worksite.getInstructions().get(position).getInstructionId());
                     textView.setText(worksite.getInstructions().get(position).getTitle());
                     break;
                 default:
             }
-
-            /*
-            Worksite worksite = worksites.get(position);
-            Drawing drawing = worksite.getDrawings().get(position);
-
-
-            ImageView imageView = (ImageView) view.findViewById(R.id.file_image);
-            imageView.setImageResource(worksites.get(position).getFileImage());  // Oli suora resurssiviite.
-
-            //imageView.setScaleType(ImageView.ScaleType.FIT_XY);
-
-            TextView textView = (TextView) view.findViewById(R.id.file_text);
-            textView.setText(worksites.get(position).getName());
-            */
-            /*
-            imageView = new ImageView(mContext);
-            imageView.setLayoutParams(new GridView.LayoutParams(150, 150));
-            imageView.setScaleType(ImageView.ScaleType.CENTER_CROP);
-            imageView.setPadding(2, 2, 2, 2);
-            */
         } else {
             view = convertView;
         }
