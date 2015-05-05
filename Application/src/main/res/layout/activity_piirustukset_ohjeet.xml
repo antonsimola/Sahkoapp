@@ -47,11 +47,14 @@
         <LinearLayout
             android:orientation="vertical"
             android:layout_width="wrap_content"
-            android:layout_height="wrap_content">
+            android:layout_height="wrap_content"
+
+            android:layout_margin="50dp">
             <GridView
                 android:id="@+id/piirustukset_grid_view"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
+                android:layout_margin="50dp"
                 android:columnWidth="90dp"
                 android:numColumns="auto_fit"
                 android:verticalSpacing="80dp"
@@ -62,6 +65,7 @@
                 android:id="@+id/ohjeet_grid_view"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
+                android:layout_margin="50dp"
                 android:columnWidth="90dp"
                 android:numColumns="auto_fit"
                 android:verticalSpacing="80dp"
