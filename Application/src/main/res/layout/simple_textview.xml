@@ -3,5 +3,5 @@
 <TextView
 
     style="@style/tyolista_sisalto"
-    android:background="#6699FF"
+    android:background="#2196f3"
     xmlns:android="http://schemas.android.com/apk/res/android" />

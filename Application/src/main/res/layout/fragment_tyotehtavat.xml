@@ -4,7 +4,7 @@
     android:layout_height="fill_parent"
     android:weightSum="2"
     android:baselineAligned="false"
-    android:background="#6699FF"
+    android:background="#2196f3"
     android:id="@+id/asd">
 
     <ExpandableListView
@@ -19,7 +19,7 @@
         android:layout_width="match_parent"
         android:layout_height="match_parent"
         android:layout_weight="1"
-        android:background="#6699FF"
+        android:background="#2196f3"
         android:layout_gravity="center">
         <GridLayout
             android:layout_width="wrap_content"

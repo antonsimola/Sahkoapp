@@ -2,7 +2,8 @@
 <FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:background="#6699FF"
+    android:background="#2196f3"
+
     android:layout_gravity="center">
     <GridLayout xmlns:android="http://schemas.android.com/apk/res/android"
         android:layout_width="wrap_content"
@@ -18,6 +19,7 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:text="Kirjaudu ulos"
+
             android:id="@+id/btn_logout"
             android:layout_gravity="left"
             android:layout_column="1"
@@ -118,6 +120,7 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:text="Tietoa"
+            android:textColor="#FFF"
             android:id="@+id/btn_info"
             android:layout_row="4"
             android:layout_column="1"
