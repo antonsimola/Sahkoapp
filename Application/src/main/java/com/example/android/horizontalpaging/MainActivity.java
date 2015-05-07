@@ -11,12 +11,15 @@ import android.support.v4.app.FragmentManager;
 import android.support.v4.app.FragmentPagerAdapter;
 import android.support.v4.view.ViewPager;
 import android.view.View;
+
+import android.widget.AdapterView;
+import android.widget.Spinner;
 import android.widget.Toast;
 
 import java.util.Locale;
 
 public class MainActivity extends FragmentActivity implements ActionBar.TabListener,
-        TyomaaFragment.OnTyomaaInteractionListener {
+        TyomaaFragment.OnTyomaaInteractionListener, AdapterView.OnItemSelectedListener {
     private boolean loggedIn = false;
     private WorksiteControl worksiteControl;
 
@@ -106,6 +109,7 @@ public class MainActivity extends FragmentActivity implements ActionBar.TabListe
         }
         //Sovellus käynnistyy uutiset näkymään
         mViewPager.setCurrentItem(1);
+
     }
 
     /**
@@ -245,6 +249,25 @@ public class MainActivity extends FragmentActivity implements ActionBar.TabListe
         toast.show();
     }
 
+    @Override
+    public void onItemSelected(AdapterView<?> parent, View view, int position, long id) {
+
+        languageChangedToast(parent.getItemAtPosition(position).toString());
+    }
+
+    @Override
+    public void onNothingSelected(AdapterView<?> parent) {
+
+    }
+
+    public void languageChangedToast(String text) {
+        Context context = getApplicationContext();
+        int duration = Toast.LENGTH_SHORT;
+
+        Toast toast = Toast.makeText(context, "Kieli on nyt "+text, duration);
+        toast.show();
+
+    }
     @Override
     public void onTyomaaGridSelected(int position) {
         // Käyttäjä valitse Ohjeet-osiosta kansion, jolla on indeksi (>= 0).
