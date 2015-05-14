@@ -1,10 +1,13 @@
 package com.example.android.horizontalpaging;
 
+import android.content.Context;
 import android.os.Bundle;
 import android.support.v4.app.Fragment;
 import android.view.LayoutInflater;
+import android.view.MotionEvent;
 import android.view.View;
 import android.view.ViewGroup;
+import android.view.inputmethod.InputMethodManager;
 import android.widget.AdapterView;
 import android.widget.ArrayAdapter;
 import android.widget.Button;
@@ -29,7 +32,7 @@ public class TyotehtavatFragment extends Fragment implements AdapterView.OnItemC
         employees.add("Mauri");
         employees.add("Pekka");
         employees.add("Reiska");
-        View rootView = inflater.inflate(R.layout.fragment_tyotehtavat, container, false);
+        final View rootView = inflater.inflate(R.layout.fragment_tyotehtavat, container, false);
         ExpandableListView elv = (ExpandableListView) rootView.findViewById(R.id.list_tyotehtavat);
         ExpListAdapter adapter = new ExpListAdapter(luoData());
         MainActivity act = (MainActivity) getActivity();
@@ -54,6 +57,25 @@ public class TyotehtavatFragment extends Fragment implements AdapterView.OnItemC
                 lpw.show();
             }
         });
+
+        /* (Samuli lisäsi tämän 14.5.2015)
+         * Tapahtumankuuntelija kuuntelee fragmentin painalluksia (käyttäjä hipaisee fragmentin
+         * sisältöä), ja painalluksen tapahtuessa piilotetaan näppäimistö.
+         */
+        // Fragmentin painallusten kuunteleminen:
+        // http://stackoverflow.com/questions/21882251/how-to-handle-touch-events-on-a-fragment
+        rootView.setOnTouchListener(new View.OnTouchListener() {
+            @Override
+            public boolean onTouch(View v, MotionEvent event) {
+                // Näppäimistön piilottaminen:
+                // http://stackoverflow.com/questions/1109022/close-hide-the-android-soft-keyboard
+                InputMethodManager manager = (InputMethodManager)rootView.getContext().getSystemService(Context.INPUT_METHOD_SERVICE);
+                manager.hideSoftInputFromWindow(rootView.getWindowToken(), 0);
+
+                return true;
+            }
+        });
+
         return rootView;
     }
 
