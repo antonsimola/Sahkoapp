@@ -1,11 +1,4 @@
-/* Tämä fragmentti mahdollistaa työmaiden valitsemisen matriisimuotoisesta kansiorakenteesta.
- *
- * Samuli Siitonen
- * 5.5.2015
-*/
 package com.example.android.horizontalpaging;
-
-// Lähde: http://developer.android.com/guide/topics/ui/layout/gridview.html
 
 import android.app.Activity;
 import android.os.Bundle;
@@ -17,21 +10,24 @@ import android.widget.AdapterView;
 import android.widget.Button;
 import android.widget.GridView;
 import android.widget.SearchView;
-
 import java.util.ArrayList;
 
 /**
  * Created by Samuli on 1.5.2015.
+ * Käytetty lähdettä: http://developer.android.com/guide/topics/ui/layout/gridview.html
+ *
+ * Tämä luokka kuvaa työmaat sisältävää fragmenttia. Kyseinen fragmentti mahdollistaa työmaiden
+ * valitsemisen matriisimuotoisesta kansiorakenteesta.
  */
 public class TyomaaFragment extends Fragment {
 
-    private OnTyomaaInteractionListener mainActivity;  // Viite MainActivityyn (tiedonsiirto).
+    private OnTyomaaInteractionListener mainActivity;   // Viite MainActivityyn (tiedonsiirto).
+    private TyomaaAdapter tyomaaAdapter;                // Muodostaa gridiin (GridView) kansioita.
+    private ArrayList<Worksite> worksites;              // Kaikki työmaat tietorakenteessa.
+    private WorksiteControl worksiteControl;            // Työmaiden kontrolliluokka.
+    private GridView gridView;                          // Kansioiden UI-matriisi.
 
-    private TyomaaAdapter tyomaaAdapter;  // Muodostaa gridiin (GridView) kansioita.
-    private ArrayList<Worksite> worksites;  // Kaikki tyomaat.
-    private WorksiteControl worksiteControl;
-    private GridView gridView;
-
+    // Fragmentin parametriton alustaja.
     public TyomaaFragment() {
 
     }
@@ -119,6 +115,7 @@ public class TyomaaFragment extends Fragment {
         mainActivity = null;
     }
 
+    // Haetaan UI-matriisista hakuehtoa (nimi) vastaavaa kansiota.
     private void performWorksiteSearch(String name, View view) {
         ArrayList<Worksite> foundWorksites = worksiteControl.findWorksites(name);
 
@@ -129,7 +126,7 @@ public class TyomaaFragment extends Fragment {
         }
     }
 
-    // Pitää kutsua heti olion luomisen jälkeen.
+    // Pitää kutsua heti olion luomisen jälkeen, jotta pystytään käsittelemään kaikkia työmaita.
     public void setWorksiteControl(WorksiteControl worksiteControl) {
         this.worksiteControl = worksiteControl;
     }

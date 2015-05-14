@@ -1,7 +1,6 @@
 package com.example.android.horizontalpaging;
 
-// Lähde: http://developer.android.com/training/basics/fragments/fragment-ui.html
-
+// Huom. käytössä support-kirjasto (ei android.app).
 import android.os.Bundle;
 import android.support.v4.app.Fragment;
 import android.support.v4.app.FragmentActivity;
@@ -14,17 +13,23 @@ import android.widget.AdapterView;
 import android.widget.Button;
 import android.widget.GridView;
 import android.widget.SearchView;
-
 import java.util.ArrayList;
 
-// Huom. support-kirjasto (ei android.app...).
-
+/* Tekijä: Samuli
+ * Viimeisin muokkaus: 14.5.2015
+ * Käytetty lähdettä: http://developer.android.com/training/basics/fragments/fragment-ui.html
+ *
+ * Tämä luokka toteuttaa activityn, josta käyttäjä voi valita ohjeen tai piirustuksen katsomisen.
+ * Piirustukselle ja ohjeelle on omat fragmenttinsä, jotka kuuluvat tälle tämän luokan kuvaamalle
+ * activitylle.
+ */
 public class PiirustuksetOhjeetActivity extends FragmentActivity implements
         PiirustusOhjeFragment.OnPiirustusOhjeInteractionListener{
 
-    private Worksite worksite;
-    private GridView drawingsGridView, instructionsGridView;
+    private Worksite worksite;  // Yksittäinen työmaa.
+    private GridView drawingsGridView, instructionsGridView;  // UI-matriisit.
 
+    // Fragmenttit käyttävät (vakio)merkkijonoja avaimina hajautustaulussa.
     public final static String INSTRUCTION_MESSAGE =
             "com.example.android.horizontal.INSTRUCTION";
     public final static String DRAWING_MESSAGE =
@@ -36,29 +41,25 @@ public class PiirustuksetOhjeetActivity extends FragmentActivity implements
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_piirustukset_ohjeet);
 
-        // Tarkistetaan fragment xml-layoutin olemassaolo.
-        //if (findViewById(R.id.piirustukset_ohjeet_main_linear_layout) != null) {
-
-
         if (savedInstanceState != null) {
-            //return;
+            return;
         }
 
-       // }
-
-        SearchView searchView = (SearchView)findViewById(R.id.piirustukset_ohjeet_search_view);
-
+        // Kansiohaun toteutuksessa käytettävät hakupainikkeet.
         Button searchButton = (Button)findViewById(R.id.piirustukset_ohjeet_search_button);
         Button resetSearchButton = (Button)findViewById(
                 R.id.piirustukset_ohjeet_reset_search_button);
 
+        // UI-matriisit piirustuksille ja ohjeille.
         drawingsGridView = (GridView)findViewById(R.id.piirustukset_grid_view);
         instructionsGridView = (GridView)findViewById(R.id.ohjeet_grid_view);
 
-        Bundle bundle = getIntent().getExtras();
+        Bundle bundle = getIntent().getExtras();  // Activityn luonnissa tarjottu tietosisältö.
 
+        // Haetaan activityn luonnissa annettu työmaa.
         worksite = (Worksite)bundle.getSerializable(MainActivity.DRAWINGS_INSTRUCTIONS_MESSAGE);
 
+        // Asetetaan adapterit UI-matriiseille.
         drawingsGridView.setAdapter(new PiirustuksetOhjeetAdapter(this, worksite, 1));
         instructionsGridView.setAdapter(new PiirustuksetOhjeetAdapter(this, worksite, 2));
 
@@ -104,6 +105,7 @@ public class PiirustuksetOhjeetActivity extends FragmentActivity implements
         });
     }
 
+    // Ei varsinaista käyttöä.
     @Override
     public boolean onCreateOptionsMenu(Menu menu) {
         // Inflate the menu; this adds items to the action bar if it is present.
@@ -111,6 +113,7 @@ public class PiirustuksetOhjeetActivity extends FragmentActivity implements
         return true;
     }
 
+    // Ei varsinaista käyttöä.
     @Override
     public boolean onOptionsItemSelected(MenuItem item) {
         // Handle action bar item clicks here. The action bar will
@@ -126,9 +129,10 @@ public class PiirustuksetOhjeetActivity extends FragmentActivity implements
         return super.onOptionsItemSelected(item);
     }
 
-    // Tehdään haku piirustusten ja ohjeiden suhteen.
+    // Suoritaan haku piirustusten ja ohjeiden suhteen.
     private void performSearch(String title) {
 
+        // Hakua vastaavien piirustusten ja ohjeiden tietorakenteet.
         ArrayList<Drawing> foundDrawings = worksite.findDrawings(title);
         ArrayList<Instruction> foundInstructions = worksite.findInstructions(title);
 
@@ -155,31 +159,23 @@ public class PiirustuksetOhjeetActivity extends FragmentActivity implements
 
     // Käyttäjä valitsi piirustuksen matriisista (GridView).
     public void onPiirustuksetInteraction(Drawing drawing) {
-        //removeFragment(piirustuksetOhjeetFragment);
         Bundle bundle = new Bundle();
         bundle.putSerializable(DRAWING_MESSAGE, drawing);
-        //createFragment(new PiirustusOhjeFragment(), R.id.fragment_test, bundle);
+        // Vaihdetaan nykyinen fragmentti valitun tiedon mukaiseen fragmenttiin.
         replaceFragment(new PiirustusOhjeFragment(), R.id.piirustukset_ohjeet_main_relative_layout, bundle);
 
     }
 
     // Käyttäjä valitsi ohjeen matriisista (GridView).
     public void onOhjeetInteraction(Instruction instruction) {
-        //removeFragment(piirustuksetOhjeetFragment);
         Bundle bundle = new Bundle();
         bundle.putSerializable(INSTRUCTION_MESSAGE, instruction);
-        //createFragment(new PiirustusOhjeFragment(), R.id.fragment_test, bundle);
+
+        // Vaihdetaan nykyinen fragmentti valitun tiedon mukaiseen fragmenttiin.
         replaceFragment(new PiirustusOhjeFragment(), R.id.piirustukset_ohjeet_main_relative_layout, bundle);
     }
 
-    // Poistetaan piirustuksia ja ohjeita sisältävä fragmentti.
-    private void removeFragment(Fragment fragment) {
-        FragmentManager manager = getSupportFragmentManager();
-        FragmentTransaction transaction = manager.beginTransaction();
-
-        transaction.remove(fragment).commit();
-    }
-
+    // Vaihdetaan nykyinen fragmentti toiseen (annettu parametrina).
     private void replaceFragment(Fragment fragment, Integer containerId, Bundle bundle) {
         FragmentManager manager = getSupportFragmentManager();
         FragmentTransaction transaction = manager.beginTransaction();
@@ -191,13 +187,14 @@ public class PiirustuksetOhjeetActivity extends FragmentActivity implements
                 fragment.getClass().getName()).commit();
     }
 
-    // Yksittäisen piirustuksen/ohjeen tapahtumat (PiirustusOhjeFragment).
+    // Ei varsinaista käyttöä.
     @Override
     public void onOhjeInteraction() {
 
 
     }
 
+    // Ei varsinaista käyttöä.
     @Override
     public void onPiirustusInteraction() {
 

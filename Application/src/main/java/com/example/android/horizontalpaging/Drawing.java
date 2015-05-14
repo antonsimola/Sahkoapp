@@ -4,12 +4,14 @@ import java.io.Serializable;
 
 /**
  * Created by Samuli on 2.5.2015.
+ * Tämä luokka kuvaa yksittäiseen sähköpiirustukseen liittyvän kuvan ominaisuudet ja metodit.
  */
 public class Drawing implements Serializable{
-    private String title;
-    private Integer drawingId;
-    private Integer actualDrawingID;
+    private String title;               // Kuvaotsikko.
+    private Integer drawingId;          // Viite kuvatiedoston kuvakkeeseen (res/drawlable).
+    private Integer actualDrawingID;    // Viite todelliseen kuvaan (res/drawable).
 
+    // Luokan alustaja ottaa prametrina kuvaotsikon sekä kuvakkeen ja todellisen kuvan resurssin.
     public Drawing(String title, Integer drawingId, Integer actualDrawingId) {
         this.title = title;
         this.drawingId = drawingId;
@@ -17,6 +19,7 @@ public class Drawing implements Serializable{
 
     }
 
+    // Saantimetodit.
     public String getTitle() {
         return title;
     }

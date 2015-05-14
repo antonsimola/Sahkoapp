@@ -1,10 +1,3 @@
-/* Tämä luokka luo uusia olioita työmaista. Työmaille luodaan piirustukset ja ohjeet olioita
- * erillisiin tietorakenteisiin
- *
- * Samuli Siitonen
- * 5.5.2015
- */
-
 package com.example.android.horizontalpaging;
 
 import java.io.Serializable;
@@ -12,26 +5,29 @@ import java.util.ArrayList;
 
 /**
  * Created by Samuli on 2.5.2015.
+ *
+ * Tämä luokka luo uusia olioita työmaista. Työmaille luodaan piirustukset ja ohjeet -olioita
+ * erillisiin tietorakenteisiin
  */
 public class WorksiteControl implements Serializable{
-    private ArrayList<Worksite> worksites;
+    private ArrayList<Worksite> worksites;  // Kaikkien työmaiden tietorakenne.
 
     public WorksiteControl(int amount) {
+        // Alustaja kutsuu luokan metodia työmaiden luomiseksi.
         pupulateWorksites(amount);
     }
 
+    // Luodaan uusia työmaita luokan tietorakenteeseen,
     private void pupulateWorksites(int amount) {
         worksites = new ArrayList<>();
 
-        // Tällä luodaan työmaat ja asetetaan ohjeet sekä piirustukset. Tästä voi tehdä erilaisia
-        // toteutuksia (mitä käyttäjä näkee).
         for(int i = 0; i < amount; i++)
             worksites.add(
-                    new Worksite("Tyomaa " + (i + 1), i + ".2", R.drawable.file_512x512,createDrawings(),
-                            createInstructions()));
+                    new Worksite("Tyomaa " + (i + 1), i + ".2", R.drawable.file_512x512,
+                            createDrawings(), createInstructions()));
     }
 
-    // Lisätään uusia piirustuksia ArrayList-tietorakenteeseen.
+    // Lisätään uusia piirustuksia luokan tietorakenteeseen.
     private ArrayList<Drawing> createDrawings() {
         ArrayList<Drawing> drawings = new ArrayList<>();
 
@@ -42,7 +38,7 @@ public class WorksiteControl implements Serializable{
         return drawings;
     }
 
-    // Lisätään uusia ohjeita ArrayList-tietorakenteeseen
+    // Lisätään uusia ohjeita luokan tietorakenteeseen
     private ArrayList<Instruction> createInstructions() {
         ArrayList<Instruction> instructions = new ArrayList<>();
         String text = "";
@@ -55,7 +51,9 @@ public class WorksiteControl implements Serializable{
         return instructions;
     }
 
-    // Etsii anettua nimeä jokseenkin (String.contains()) vastaavat työmaat. Voi palauttaa tyhjän listan (empty).
+    /* Etsii anettua nimeä karkeasti (String.contains()) vastaavat työmaat. Voi palauttaa tyhjän
+     * listan (empty).
+     */
     public ArrayList<Worksite> findWorksites(String name) {
         ArrayList<Worksite> foundWorksites = new ArrayList<>();
 
@@ -68,6 +66,8 @@ public class WorksiteControl implements Serializable{
 
         return foundWorksites;
     }
+
+    // Saantimetodit.
 
     public ArrayList<Worksite> getWorksites() {
         return worksites;

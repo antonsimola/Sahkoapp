@@ -1,7 +1,5 @@
 package com.example.android.horizontalpaging;
 
-// Lähde: http://stackoverflow.com/questions/6186753/android-how-to-put-the-text-below-the-image-in-grid-view
-
 import android.content.Context;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -9,11 +7,15 @@ import android.view.ViewGroup;
 import android.widget.BaseAdapter;
 import android.widget.ImageView;
 import android.widget.TextView;
-
 import java.util.ArrayList;
 
 /**
  * Created by Samuli on 2.5.2015.
+ * Käytetty lähdettä:
+ * http://stackoverflow.com/questions/6186753/android-how-to-put-the-text-below-the-image-in-grid-view
+ *
+ * Tämä on luokka toimii adapterina TyomaaFragmentille, eli se muodostaa fragmenttiin matriisin,
+ * jossa on kansioiden kuvia.
  */
 public class TyomaaAdapter extends BaseAdapter {
     private Context context;

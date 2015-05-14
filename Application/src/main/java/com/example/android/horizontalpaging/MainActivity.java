@@ -62,7 +62,7 @@ public class MainActivity extends FragmentActivity implements ActionBar.TabListe
             showLoginDialog(view);
         }
 
-        worksiteControl = new WorksiteControl(10);  // Luodaan 10 työmaata.
+        worksiteControl = new WorksiteControl(10);  // Luodaan 10 työmaata kontrollioliossa.
 
 
         // Set up the action bar. The navigation mode is set to NAVIGATION_MODE_TABS, which will
@@ -180,7 +180,9 @@ public class MainActivity extends FragmentActivity implements ActionBar.TabListe
                 case 2:
                     TyomaaFragment tyomaaFragment = new TyomaaFragment();
 
-                    // Täytyy asettaa erikseen heti olion luomisen jälkeen.
+                    /* Täytyy asettaa erikseen heti olion luomisen jälkeen (ei onnistu alustajan
+                     * kautta).
+                     */
                     tyomaaFragment.setWorksiteControl(worksiteControl);
 
                     return tyomaaFragment;
@@ -270,16 +272,17 @@ public class MainActivity extends FragmentActivity implements ActionBar.TabListe
     }
     @Override
     public void onTyomaaGridSelected(int position) {
-        // Käyttäjä valitse Ohjeet-osiosta kansion, jolla on indeksi (>= 0).
+        // Käyttäjä valitsee Ohjeet-osiosta kansion, jolla on indeksi (>= 0).
 
         // Lähde: http://developer.android.com/training/basics/firstapp/starting-activity.html
         // ja: http://stackoverflow.com/questions/2139134/how-to-send-an-object-from-one-android-activity-to-another-using-intents
 
         Intent intent = new Intent(this, PiirustuksetOhjeetActivity.class);
 
-        // Tässä annetaan PiirustuksetOhjeetActivitylle referenssi yhteen työmaahan, jonka
-        // perusteella rakennetaan fragmenttien sisältö (piirustukset ja ohjeet työmaalle).
+        // Tässä annetaan PiirustuksetOhjeetActivitylle referenssi yhteen työmaahan (jonka
+        // perusteella rakennetaan fragmenttien sisältö).
         intent.putExtra(DRAWINGS_INSTRUCTIONS_MESSAGE, worksiteControl.getWorksites().get(position));
+
         startActivity(intent);
     }
 

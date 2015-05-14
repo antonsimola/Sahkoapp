@@ -1,9 +1,3 @@
-/* Tämä luokka kuvaa työmaata.
- *
- * Samuli Siitonen
- * 5.5.2015
- */
-
 package com.example.android.horizontalpaging;
 
 import java.io.Serializable;
@@ -11,24 +5,23 @@ import java.util.ArrayList;
 
 /**
  * Created by Samuli on 2.5.2015.
+ *
+ * Tämä luokka kuvaa yksittäistä työmaata.
  */
 public class Worksite implements Serializable {
-    /* Kuvaa työmaata. Serialisoinnilla pyritään mahdollistamaan intent.putExtra() tämän luokan
-     * olion suhteen. Jos serialisointi on hidasta, niin sen sijasta voidaan käyttää Parceable
-     * implementaatiota.
-     * Lähde:
-     * http://stackoverflow.com/questions/2139134/how-to-send-an-object-from-one-android-activity-to-another-using-intents
-     */
-    private String name;
-    private String date;
-    private Integer fileImage;
+
+     // http://stackoverflow.com/questions/2139134/how-to-send-an-object-from-one-android-activity-to-another-using-intents
+
+    private String name;        // Työmaan nimi.
+    private String date;        // Työmaan luontipäivämäärä (lisätty sovellukseen).
+    private Integer fileImage;  // Työmaakansion kuvake.
+
+    // Tietorakenteet työmaan piirustukseille ja ohjeille.
     private ArrayList<Drawing> drawings;
     private ArrayList<Instruction> instructions;
 
     public Worksite(String name, String date, Integer fileImage, ArrayList<Drawing>drawings,
                     ArrayList<Instruction> instructions) {
-        // Työmaa oliolla on nimi, päivämäärä (kansiot), piirustuksia, ohjeita ja kansion
-        // kuva (R.drawable viite).
         this.name = name;
         this.date = date;
         this.drawings = drawings;
@@ -36,7 +29,7 @@ public class Worksite implements Serializable {
         this.fileImage = fileImage;
     }
 
-    /* Etsii anettua otsikkoa jokseenkin (String.contains()) vastaavat piirustukset. Voi palauttaa
+    /* Etsii anettua otsikkoa karkeasti (String.contains()) vastaavat piirustukset. Voi palauttaa
      * tyhjän listan (empty).
      */
     public ArrayList<Drawing> findDrawings(String title) {
@@ -45,15 +38,13 @@ public class Worksite implements Serializable {
         for(Drawing drawing : drawings) {
             if(drawing.getTitle().toLowerCase().contains(title.toLowerCase())) {
                 foundDrawings.add(drawing);
-                //System.out.println("LÖYTYI " + drawing.getTitle());
-
             }
         }
 
         return foundDrawings;
     }
 
-    /* Etsii anettua otsikkoa jokseenkin (String.contains()) vastaavat ohjeet. Voi palauttaa
+    /* Etsii anettua otsikkoa karkeasti (String.contains()) vastaavat ohjeet. Voi palauttaa
      * tyhjän listan (empty).
      */
     public ArrayList<Instruction> findInstructions(String title) {
@@ -62,12 +53,13 @@ public class Worksite implements Serializable {
         for(Instruction instruction : instructions) {
             if(instruction.getTitle().toLowerCase().contains(title.toLowerCase())) {
                 foundInstructions.add(instruction);
-                //System.out.println("LÖYTYI " + instruction.getTitle());
             }
         }
 
         return foundInstructions;
     }
+
+    // Saanti- ja asetusmetodit.
 
     public String getName() {
         return name;
