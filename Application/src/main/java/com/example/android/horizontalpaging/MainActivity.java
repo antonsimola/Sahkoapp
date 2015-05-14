@@ -11,12 +11,13 @@ import android.support.v4.app.FragmentManager;
 import android.support.v4.app.FragmentPagerAdapter;
 import android.support.v4.view.ViewPager;
 import android.view.View;
-
 import android.widget.AdapterView;
-import android.widget.Spinner;
 import android.widget.Toast;
 
 import java.util.Locale;
+
+// Pääactivity, joka sisältää viewpager + action bar -combon,
+// joka näyttää sovelluksen neljä välilehteä
 
 public class MainActivity extends FragmentActivity implements ActionBar.TabListener,
         TyomaaFragment.OnTyomaaInteractionListener, AdapterView.OnItemSelectedListener {
@@ -26,37 +27,18 @@ public class MainActivity extends FragmentActivity implements ActionBar.TabListe
     public final static String DRAWINGS_INSTRUCTIONS_MESSAGE =
             "com.example.android.horizontal.MESSAGE";
 
-    /**
-     * The {@link android.support.v4.view.PagerAdapter} that will provide
-     * fragments for each of the sections. We use a
-     * {@link android.support.v4.app.FragmentPagerAdapter} derivative, which
-     * will keep every loaded fragment in memory. If this becomes too memory
-     * intensive, it may be best to switch to a
-     * {@link android.support.v4.app.FragmentStatePagerAdapter}.
-     */
+    // Pitää tallessa tab-fragmentit
     SectionsPagerAdapter mSectionsPagerAdapter;
 
-    /**
-     * The {@link ViewPager} that will host the section contents.
-     */
+    // Näyttää tab-fragmentit
     ViewPager mViewPager;
 
-    /**
-     * Create the activity. Sets up an {@link android.app.ActionBar} with tabs, and then configures the
-     * {@link ViewPager} contained inside R.layout.activity_main.
-     *
-     * <p>A {@link SectionsPagerAdapter} will be instantiated to hold the different pages of
-     * fragments that are to be displayed. A
-     * {@link android.support.v4.view.ViewPager.SimpleOnPageChangeListener} will also be configured
-     * to receive callbacks when the user swipes between pages in the ViewPager.
-     *
-     * @param savedInstanceState
-     */
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        // Load the UI from res/layout/activity_main.xml
+
         setContentView(R.layout.sample_main);
+        // näyttää login - popupin
         if (!loggedIn) {
             View view = new View(this);
             showLoginDialog(view);
@@ -64,40 +46,24 @@ public class MainActivity extends FragmentActivity implements ActionBar.TabListe
 
         worksiteControl = new WorksiteControl(10);  // Luodaan 10 työmaata kontrollioliossa.
 
-
-        // Set up the action bar. The navigation mode is set to NAVIGATION_MODE_TABS, which will
-        // cause the ActionBar to render a set of tabs. Note that these tabs are *not* rendered
-        // by the ViewPager; additional logic is lower in this file to synchronize the ViewPager
-        // state with the tab state. (See mViewPager.setOnPageChangeListener() and onTabSelected().)
-        // BEGIN_INCLUDE (set_navigation_mode)
+        //Asettaa näytön yläreunaan action barin, ja asetetaan se näyttämään tab-valikko
         final ActionBar actionBar = getActionBar();
         actionBar.setNavigationMode(ActionBar.NAVIGATION_MODE_TABS);
-        // END_INCLUDE (set_navigation_mode)
-
-        // BEGIN_INCLUDE (setup_view_pager)
-        // Create the adapter that will return a fragment for each of the three primary sections
-        // of the app.
+        //Adapter, joka sisältää ja suorittaa fragmenttien vaihdon
         mSectionsPagerAdapter = new SectionsPagerAdapter(getSupportFragmentManager());
 
-        // Set up the ViewPager with the sections adapter.
+        //ViewPagerille Adapteri
         mViewPager = (ViewPager) findViewById(R.id.pager);
         mViewPager.setAdapter(mSectionsPagerAdapter);
 
-        // END_INCLUDE (setup_view_pager)
-
-        // When swiping between different sections, select the corresponding tab. We can also use
-        // ActionBar.Tab#select() to do this if we have a reference to the Tab.
-        // BEGIN_INCLUDE (page_change_listener)
+        // swipe
         mViewPager.setOnPageChangeListener(new ViewPager.SimpleOnPageChangeListener() {
             @Override
             public void onPageSelected(int position) {
                 actionBar.setSelectedNavigationItem(position);
             }
         });
-        // END_INCLUDE (page_change_listener)
-
-        // BEGIN_INCLUDE (add_tabs)
-        // For each of the sections in the app, add a tab to the action bar.
+        // Tab-valikkoon napit
         for (int i = 0; i < mSectionsPagerAdapter.getCount(); i++) {
             // Create a tab with text corresponding to the page title defined by the adapter. Also
             // specify this Activity object, which implements the TabListener interface, as the
@@ -112,61 +78,32 @@ public class MainActivity extends FragmentActivity implements ActionBar.TabListe
 
     }
 
-    /**
-     * Update {@link ViewPager} after a tab has been selected in the ActionBar.
-     *
-     * @param tab Tab that was selected.
-     * @param fragmentTransaction A {@link android.app.FragmentTransaction} for queuing fragment operations to
-     *                            execute once this method returns. This FragmentTransaction does
-     *                            not support being added to the back stack.
-     */
-    // BEGIN_INCLUDE (on_tab_selected)
+    //Tämä reagoi nappien painallukseen tab-valikossa
     @Override
     public void onTabSelected(ActionBar.Tab tab, FragmentTransaction fragmentTransaction) {
-        // When the given tab is selected, tell the ViewPager to switch to the corresponding page.
+
         mViewPager.setCurrentItem(tab.getPosition());
     }
-    // END_INCLUDE (on_tab_selected)
-
-    /**
-     * Unused. Required for {@link android.app.ActionBar.TabListener}.
-     */
+    // Ei tarvita
     @Override
     public void onTabUnselected(ActionBar.Tab tab, FragmentTransaction fragmentTransaction) {
     }
 
-    /**
-     * Unused. Required for {@link android.app.ActionBar.TabListener}.
-     */
+    // Ei tarvita
     @Override
     public void onTabReselected(ActionBar.Tab tab, FragmentTransaction fragmentTransaction) {
     }
 
-    // BEGIN_INCLUDE (fragment_pager_adapter)
-    /**
-     * A {@link FragmentPagerAdapter} that returns a fragment corresponding to
-     * one of the sections/tabs/pages. This provides the data for the {@link ViewPager}.
-     */
     public class SectionsPagerAdapter extends FragmentPagerAdapter {
-    // END_INCLUDE (fragment_pager_adapter)
+
 
         public SectionsPagerAdapter(FragmentManager fm) {
             super(fm);
         }
 
-        // BEGIN_INCLUDE (fragment_pager_adapter_getitem)
-        /**
-         * Get fragment corresponding to a specific position. This will be used to populate the
-         * contents of the {@link ViewPager}.
-         *
-         * @param position Position to fetch fragment for.
-         * @return Fragment for specified position.
-         */
         @Override
         public Fragment getItem(int position) {
-            // getItem is called to instantiate the fragment for the given page.
-            // Return a DummySectionFragment (defined as a static inner class
-            // below) with the page number as its lone argument.
+            // Luo fragmentit jokaiselle sivulle, ja asettaa tarvittavia alkuarvoja niille
             switch (position){
                 case 0:
                     TyotehtavatFragment tyotehtavat = new TyotehtavatFragment();
@@ -174,6 +111,7 @@ public class MainActivity extends FragmentActivity implements ActionBar.TabListe
                     return tyotehtavat;
                 case 1:
                     //Tässä laitetaan tuo viewPager olio messiin tuolle uutisetFragmentille
+                    // ,jotta voidaan siirtyä uutisista työtehtäviin
                     UutisetFragment uutiset = new UutisetFragment();
                     uutiset.setViewPager(mViewPager);
                     return uutiset;
@@ -192,28 +130,14 @@ public class MainActivity extends FragmentActivity implements ActionBar.TabListe
 
             return null;
         }
-        // END_INCLUDE (fragment_pager_adapter_getitem)
 
-        // BEGIN_INCLUDE (fragment_pager_adapter_getcount)
-        /**
-         * Get number of pages the {@link ViewPager} should render.
-         *
-         * @return Number of fragments to be rendered as pages.
-         */
+        // Palauttaa tabien määrän
         @Override
         public int getCount() {
-            // Show 4 total pages.
+
             return 4;
         }
-        // END_INCLUDE (fragment_pager_adapter_getcount)
-
-        // BEGIN_INCLUDE (fragment_pager_adapter_getpagetitle)
-        /**
-         * Get title for each of the pages. This will be displayed on each of the tabs.
-         *
-         * @param position Page to fetch title for.
-         * @return Title for specified page.
-         */
+        // Tab-otsikot
         @Override
         public CharSequence getPageTitle(int position) {
             Locale l = Locale.getDefault();
@@ -229,12 +153,14 @@ public class MainActivity extends FragmentActivity implements ActionBar.TabListe
             }
             return null;
         }
-        // END_INCLUDE (fragment_pager_adapter_getpagetitle)
+
     }
 
+    // näyttää dialogit ajan valitsemiseen
     public void showDatePickerDialog(View v) {
-        //TÄHÄN PITÄISI SAADA TOISEN NAPIN PAINALLUS MUKAAN
+
         DatePickerFragment newFragment = new DatePickerFragment();
+        // tarkastetaan, kumpi aika halutaan valita: true: aloitusaika, false: lopetus
         if (v.getId() == R.id.btn_setfinish) {
             newFragment.setAloitus(false);
         } else {
@@ -242,6 +168,7 @@ public class MainActivity extends FragmentActivity implements ActionBar.TabListe
         }
         newFragment.show(getSupportFragmentManager(),"datePicker");
     }
+
     public void showToast(View v) {
         Context context = getApplicationContext();
         CharSequence text = "Raporttisi on lähetetty tarkastettavaksi!";

@@ -25,25 +25,28 @@ public class DatePickerFragment extends DialogFragment
     }
     @Override
     public Dialog onCreateDialog(Bundle savedInstanceState) {
-        // Use the current date as the default date in the picker
+        // datepickerin alkuarvoksi tämä pvm
         final Calendar c = Calendar.getInstance();
         int year = c.get(Calendar.YEAR);
         int month = c.get(Calendar.MONTH);
         int day = c.get(Calendar.DAY_OF_MONTH);
 
-        // Create a new instance of DatePickerDialog and return it
         return new DatePickerDialog(getActivity(), this, year, month, day);
     }
 
     public void onDateSet(DatePicker view, int year, int month, int day) {
+        //Sisältää sen tekstviewin, kumpaa halutaan päivittää
         TextView text;
         if (aloitus) {
             text =(TextView) getActivity().findViewById(R.id.text_start);
         } else {
             text =(TextView) getActivity().findViewById(R.id.text_finish);
         }
-
-        text.setText(day+"." + month +"."+ year);
+        // lyhenettään vuosi muotoon x.x.2015 -> x.x.15
+        String strYear = Integer.toString(year);
+        strYear = strYear.substring(strYear.length() -2);
+        text.setText(day+"." + month +"."+ strYear);
+        //Näytetään pvm:n jälkeen aika-dialogi
         TimePickerFragment newFragment = new TimePickerFragment();
         newFragment.setAloitus(aloitus);
         newFragment.show(getFragmentManager(),"timePicker");

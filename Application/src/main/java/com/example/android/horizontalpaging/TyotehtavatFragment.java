@@ -21,18 +21,20 @@ import java.util.ArrayList;
  * Created by Anton on 2.4.2015.
  */
 public class TyotehtavatFragment extends Fragment implements AdapterView.OnItemClickListener {
+    // Firman työtekijät, esitetään listPopupWindowissa
     ArrayList<String> employees;
     ListPopupWindow lpw;
 
     @Override
-
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
         employees = new ArrayList<>();
         employees.add("Mauri");
         employees.add("Pekka");
         employees.add("Reiska");
+        // muuttaa xml:n tiedot View-olioksi, jota käytetään fragmenttinä
         final View rootView = inflater.inflate(R.layout.fragment_tyotehtavat, container, false);
+        // työtehtävälista ja sille adapteri, joka täyttää View:n datalla
         ExpandableListView elv = (ExpandableListView) rootView.findViewById(R.id.list_tyotehtavat);
         ExpListAdapter adapter = new ExpListAdapter(luoData());
         MainActivity act = (MainActivity) getActivity();
@@ -41,8 +43,9 @@ public class TyotehtavatFragment extends Fragment implements AdapterView.OnItemC
 
         elv.setAdapter(adapter);
         // http://www.informit.com/articles/article.aspx?p=2078060&seqNum=4
+        // täyttää LPW:n arraylistin datalla, lisää kuuntelijan +-napin painallukselle
         Button btn = (Button) rootView.findViewById(R.id.btn_addemployee);
-        lpw = new ListPopupWindow(getActivity());
+        lpw = new ListPopupWindow(act);
         lpw.setAdapter(new ArrayAdapter(
                 getActivity(),
                 android.R.layout.simple_list_item_1,
@@ -79,6 +82,7 @@ public class TyotehtavatFragment extends Fragment implements AdapterView.OnItemC
         return rootView;
     }
 
+    //Tämä luo datan näytettäväksi työtehtävälistassa
     private ArrayList<TyotehtavaOtsikko> luoData(){
         ArrayList<TyotehtavaOtsikko> data = new ArrayList<>();
         TyotehtavaOtsikko otsikko;
@@ -104,6 +108,7 @@ public class TyotehtavatFragment extends Fragment implements AdapterView.OnItemC
         return data;
     }
 
+    //lisää työntekijöitä, kun lista-alkiota klikataan.
     @Override
     public void onItemClick(AdapterView<?> parent, View view,
                             int position, long id) {
