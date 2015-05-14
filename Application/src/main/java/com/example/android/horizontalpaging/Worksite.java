@@ -9,9 +9,6 @@ import java.util.ArrayList;
  * Tämä luokka kuvaa yksittäistä työmaata.
  */
 public class Worksite implements Serializable {
-
-     // http://stackoverflow.com/questions/2139134/how-to-send-an-object-from-one-android-activity-to-another-using-intents
-
     private String name;        // Työmaan nimi.
     private String date;        // Työmaan luontipäivämäärä (lisätty sovellukseen).
     private Integer fileImage;  // Työmaakansion kuvake.

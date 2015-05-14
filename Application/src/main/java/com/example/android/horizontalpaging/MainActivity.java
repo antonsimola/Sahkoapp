@@ -206,8 +206,11 @@ public class MainActivity extends FragmentActivity implements ActionBar.TabListe
 
         Intent intent = new Intent(this, PiirustuksetOhjeetActivity.class);
 
-        // Tässä annetaan PiirustuksetOhjeetActivitylle referenssi yhteen työmaahan (jonka
-        // perusteella rakennetaan fragmenttien sisältö).
+        /* Tässä annetaan PiirustuksetOhjeetActivitylle referenssi yhteen työmaahan (jonka
+         * perusteella rakennetaan fragmenttien sisältö).
+         * Lähde:
+         * http://stackoverflow.com/questions/2139134/how-to-send-an-object-from-one-android-activity-to-another-using-intents
+         */
         intent.putExtra(DRAWINGS_INSTRUCTIONS_MESSAGE, worksiteControl.getWorksites().get(position));
 
         startActivity(intent);
