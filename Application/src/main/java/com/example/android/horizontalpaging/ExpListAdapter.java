@@ -16,12 +16,16 @@ public class ExpListAdapter extends BaseExpandableListAdapter {
     private LayoutInflater minflater;
     private MainActivity activity;
 
+    //Rakentajalle annetaan data, joka näytetään expListViewissä
     public ExpListAdapter(ArrayList<TyotehtavaOtsikko> data) {
         this.data = data;
     }
 
     public void setInflater(LayoutInflater mInflater, Fragment frag) {
         this.minflater = mInflater;
+    }
+    public void setActivity(MainActivity a){
+        activity = a;
     }
 
     @Override
@@ -42,6 +46,8 @@ public class ExpListAdapter extends BaseExpandableListAdapter {
         if (convertView == null) {
             convertView = minflater.inflate(R.layout.explist_sisalto, null);
         }
+        // muuttaa datan  (TyotehtavaSisalto-olio)
+        // textVieweiksi, jotka näytetään auki olevassa lista-alkiossa
         TextView teht = (TextView) convertView.findViewById(R.id.tehtava);
         teht.setText(child.getTehtava());
         TextView aloitus = (TextView) convertView.findViewById(R.id.aloitus);
@@ -56,6 +62,7 @@ public class ExpListAdapter extends BaseExpandableListAdapter {
         osoite.setText(child.getOsoite());
         TextView linkki = (TextView) convertView.findViewById(R.id.ohj_piir_linkki);
 
+        //alleviivaus textviewille, ja klikkauksen kuuntelija (avaa kansionäkymän
         String htmlString="<u>"+child.getOhjPiirLinkki()+"</u>";
 
         linkki.setText(Html.fromHtml(htmlString));
@@ -70,9 +77,7 @@ public class ExpListAdapter extends BaseExpandableListAdapter {
 
         return convertView;
     }
-    public void setActivity(MainActivity a){
-        activity = a;
-    }
+    //Lapsinäkymiä on vain yksi per emoalkio
     @Override
     public int getChildrenCount(int groupPosition) {
         return 1;
@@ -83,6 +88,7 @@ public class ExpListAdapter extends BaseExpandableListAdapter {
         return null;
     }
 
+    //Kuinka monta emoalkiota listassa
     @Override
     public int getGroupCount() {
         return data.size();
@@ -103,6 +109,7 @@ public class ExpListAdapter extends BaseExpandableListAdapter {
         return 0;
     }
 
+    //täyttää emoalkiot textvieweillä, jotka luodaan TyotehtäväOtsikko-datasta
     @Override
     public View getGroupView(int groupPosition, boolean isExpanded,
                              View convertView, ViewGroup parent) {
