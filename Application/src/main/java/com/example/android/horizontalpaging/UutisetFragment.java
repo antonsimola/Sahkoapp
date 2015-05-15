@@ -21,28 +21,37 @@ import java.util.List;
  * Edited by jayy998
  */
 public class UutisetFragment extends Fragment  {
+
+    // Needed variables
     View rootView;
     private List<News> news;
     private RecyclerView rv;
     ViewPager mViewPager;
+
+    // Creates and returns the view hierarchy associated with the fragment
+    // http://developer.android.com/reference/android/app/Fragment.html
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
+
+        // Instantiates wanted XML to View objects
         rootView = inflater.inflate(R.layout.fragment_uutiset, container, false);
         rv = (RecyclerView)rootView.findViewById(R.id.rv);
         rv.setHasFixedSize(true);
         rv.setLayoutManager(new GridLayoutManager(rootView.getContext(), 2));
+        // Add touch listener
         rv.addOnItemTouchListener(
                 new RecyclerItemClickListener(rootView.getContext(), new RecyclerItemClickListener.OnItemClickListener() {
                     @Override public void onItemClick(View view, int position) {
                         if (position == 0)
                         {
+                            // Go to Työtehtävät-screen
                             Log.d("OnClick", "Priority");
                             mViewPager.setCurrentItem(0);
                         }
                         else
                         {
-                            // Debug with Toasts
+                            // Debug with Toasts for other "Cards"
                             String txt = "CardID: " + position;
                             Toast toast = Toast.makeText(rootView.getContext(), txt, Toast.LENGTH_SHORT);
                             toast.show();
@@ -54,6 +63,8 @@ public class UutisetFragment extends Fragment  {
         initAdapter();
         return rootView;
     }
+
+    // Create some filler data
     private void initData()
     {
         news = new ArrayList<>();
@@ -72,11 +83,15 @@ public class UutisetFragment extends Fragment  {
         news.add(new News("29.4 Maisa & Miia", "Me ollaan Maisa ja Miia. Me ollaan teidän ihanat toimistotädit ;)"));
         news.add(new News("28.4 Ensimmäinen uuutinen!", "Testiuutinen lorem ipsum etc"));
     }
+
+    // Initialize CustomAdapter
     private void initAdapter()
     {
         CustomAdapter adapter = new CustomAdapter(news);
         rv.setAdapter(adapter);
     }
+
+    // Set ViewPager
     public void setViewPager(ViewPager vp) {
         mViewPager = vp;
     }

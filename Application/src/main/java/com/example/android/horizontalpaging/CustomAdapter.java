@@ -16,10 +16,12 @@ public class CustomAdapter extends RecyclerView.Adapter<CustomAdapter.NewsViewHo
     List<News> news;
     public static class NewsViewHolder extends RecyclerView.ViewHolder
     {
+        // Data for holder
         CardView cv;
         TextView row1;
         TextView row2;
 
+        // Holder for cardview
         NewsViewHolder(View itemView) {
             super(itemView);
             cv = (CardView)itemView.findViewById(R.id.cv);
@@ -30,6 +32,8 @@ public class CustomAdapter extends RecyclerView.Adapter<CustomAdapter.NewsViewHo
     CustomAdapter(List<News> news){
         this.news = news;
     }
+
+    // Initialize new ViewHolder
     @Override
     public NewsViewHolder onCreateViewHolder(ViewGroup viewGroup, int i)
     {
@@ -37,17 +41,23 @@ public class CustomAdapter extends RecyclerView.Adapter<CustomAdapter.NewsViewHo
         NewsViewHolder nvh = new NewsViewHolder(v);
         return nvh;
     }
+
+    // Specify the contents of each item of the RecyclerView
     @Override
-    public void onBindViewHolder(NewsViewHolder personViewHolder, int i)
+    public void onBindViewHolder(NewsViewHolder nvh, int i)
     {
-        personViewHolder.row1.setText(news.get(i).row1);
-        personViewHolder.row2.setText(news.get(i).row2);
+        nvh.row1.setText(news.get(i).row1);
+        nvh.row2.setText(news.get(i).row2);
     }
+
+    // Superclass implementation
     @Override
     public void onAttachedToRecyclerView(RecyclerView recyclerView)
     {
         super.onAttachedToRecyclerView(recyclerView);
     }
+
+    // Get the number of items in the List
     @Override
     public int getItemCount() {
         return news.size();
