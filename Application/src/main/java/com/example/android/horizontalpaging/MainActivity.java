@@ -18,6 +18,8 @@ import java.util.Locale;
 
 // Pääactivity, joka sisältää viewpager + action bar -combon,
 // joka näyttää sovelluksen neljä välilehteä
+// Tämä on tehty käyttäen Android Studio Horizontal Paging - code samplea pohjana (viewpager, action
+// bar, ja niiden täyttäminen fragmenteillä
 
 public class MainActivity extends FragmentActivity implements ActionBar.TabListener,
         TyomaaFragment.OnTyomaaInteractionListener, AdapterView.OnItemSelectedListener {
