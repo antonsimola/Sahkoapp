@@ -14,7 +14,7 @@ public class RecyclerItemClickListener implements RecyclerView.OnItemTouchListen
 
     private OnItemClickListener cListener;
 
-    // Invoke when item has been clicked
+    // Listener
     public interface OnItemClickListener
     {
         void onItemClick(View view, int position);
